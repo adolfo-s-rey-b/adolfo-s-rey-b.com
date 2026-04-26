@@ -1,0 +1,27 @@
+# Dependencias y cache de build
+node_modules/
+.next/
+out/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Variables de entorno (nunca al repo)
+.env
+.env.local
+.env.*.local
+
+# Claude Code y MCP (configuración local — puede tener rutas internas)
+.claude/
+.agents/
+.mcp.json
+skillui-output/
+skills-lock.json
+
+# Archivos de configuración local
+configuracion.md
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

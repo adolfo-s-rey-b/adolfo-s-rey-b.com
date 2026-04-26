@@ -1,0 +1,11 @@
+{
+  "emails": [
+    { "label": "Correo Principal (Fintech)", "address": "headinvestigacion@colombiafintech.co", "primary": true },
+    { "label": "Correo Uniandes", "address": "as.rey@uniandes.edu.co", "primary": false }
+  ],
+  "social": {
+    "linkedin": "https://linkedin.com/in/adolfo-sebastian-rey-bolivar",
+    "github": "https://github.com/adolfo-s-rey-b"
+  },
+  "webhookUrl": "/api/contact"
+}

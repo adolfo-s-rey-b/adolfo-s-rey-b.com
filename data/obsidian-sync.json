@@ -1,0 +1,25 @@
+{
+  "vaultRoot": "/home/adolfo-s-rey-b/server-stack/obsidian-vault",
+  "notesRoot": "/home/adolfo-s-rey-b/server-stack/website/website-source/content/notes",
+  "mappings": [
+    {
+      "subject": "teoria-juegos",
+      "vaultPath": "Economía/Básicas/Micro/Teoría de Juegos",
+      "flatten": true,
+      "enabled": true
+    },
+    {
+      "subject": "macroeconomia",
+      "vaultPath": "Economía/Básicas/Macro/Macroeconomía II/Notas - Modern Macroeconomics (Chugh)",
+      "flatten": true,
+      "enabled": true
+    },
+    {
+      "subject": "microeconomia",
+      "vaultPath": "Economía/Básicas/Micro/Microeconomía 3",
+      "flatten": true,
+      "enabled": false,
+      "_note": "Carpeta aún no creada en la bóveda. Cambiar enabled a true cuando exista."
+    }
+  ]
+}

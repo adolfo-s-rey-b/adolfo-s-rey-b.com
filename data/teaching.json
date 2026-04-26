@@ -1,0 +1,63 @@
+{
+  "history": [
+    {
+      "period": "2026-1",
+      "semester": "Primer Semestre 2026",
+      "institution": "Universidad de Los Andes",
+      "courses": [
+        { "name": "Introducción a la Economía Colombiana", "professor": "Alberto Carrasquilla", "programUrl": null },
+        { "name": "Macroeconomía Meca", "professor": "Hernán Vallejo", "programUrl": null }
+      ]
+    },
+    {
+      "period": "2025-2",
+      "semester": "Segundo Semestre 2025",
+      "institution": "Universidad de Los Andes",
+      "courses": [
+        { "name": "Microeconomía 3", "professor": "Oskar Nupia", "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202520/Econ-3113-3123-Microeconomia-3-2025-20-Oskar-Nupia.pdf" },
+        { "name": "Organización Industrial", "professor": "Hernán Vallejo", "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202520/Econ-3672-Organización-Industrial-2025-20-Hernan-Vallejo.pdf" }
+      ]
+    },
+    {
+      "period": "2025-1",
+      "semester": "Primer Semestre 2025",
+      "institution": "Universidad de Los Andes",
+      "courses": [
+        { "name": "Teoría de Juegos", "professor": "Oskar Nupia", "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202510/Econ-2105-Teoria-de-Juegos-2025-10-Oskar-Nupia.pdf" },
+        { "name": "Introducción a la Macroeconomía", "professor": "Hernán Vallejo", "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202510/Econ-2108-Fundamentos-De-Economia-2025-10-Hernan-Vallejo.pdf" }
+      ]
+    },
+    {
+      "period": "2024-2",
+      "semester": "Segundo Semestre 2024",
+      "institution": "Universidad de Los Andes",
+      "courses": [
+        { "name": "Teoría de Juegos", "professor": "Oskar Nupia", "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202420/Econ-2105-Teoria-De-Juegos-2024-20-Oskar-Nupia.pdf" },
+        { "name": "Organización Industrial", "professor": "Hernán Vallejo", "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202420/Econ-3672-Organización-Industrial-2024-20-Hernan-Vallejo.pdf" }
+      ]
+    },
+    {
+      "period": "2024-inter",
+      "semester": "Periodo Intersemestral 2024",
+      "institution": "Universidad de Los Andes",
+      "courses": [
+        { "name": "Teoría de Juegos", "professor": "Juan José Ferro Hoyos", "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202419/Econ-2105-Teoria-De-Juegos-2024-19-Juan-Jose-Ferro.pdf" },
+        { "name": "Microeconomía 3", "professor": "Andrés Dávila-Ospina", "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202419/Econ-3123-Microeconomia-3-2024-19-Andres-Davila.pdf" }
+      ]
+    },
+    {
+      "period": "2024-1",
+      "semester": "Primer Semestre 2024",
+      "institution": "Universidad de Los Andes",
+      "courses": [
+        { "name": "Teoría de Juegos", "professor": "Oskar Nupia", "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202410/Econ-2105-Teoria-de-Juegos-2024-10-Oskar-Nupia.pdf" },
+        { "name": "Teoría del Consumidor y la Firma", "professor": "Hernán Vallejo", "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202410/Econ-2106-Teoria-Del-Consumidor-y-Firma-2024-10-Hernan-Vallejo.pdf" }
+      ]
+    }
+  ],
+  "notes": [
+    { "id": "teoria-juegos", "title": "Teoría de Juegos", "desc": "Juegos estáticos, dinámicos, información asimétrica y diseño de mecanismos." },
+    { "id": "macroeconomia", "title": "Macroeconomía", "desc": "Conceptos fundamentales, modelos de crecimiento y política monetaria." },
+    { "id": "microeconomia", "title": "Microeconomía 3", "desc": "Teoría del consumidor, la firma, equilibrio general y fallos de mercado." }
+  ]
+}

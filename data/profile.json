@@ -1,0 +1,19 @@
+{
+  "name": "Adolfo S. Rey B.",
+  "title": "Economista y Abogado",
+  "bio": [
+    "Soy un profesional interdisciplinario en la intersección de la economía, el derecho y la tecnología. Me desempeño como <strong>Director de Investigaciones y Proyectos en Colombia Fintech</strong>, donde lidero estudios sobre el ecosistema fintech, proyectos de consultoría y la construcción de propuestas de regulación y política pública.",
+    "Como <strong>economista</strong>, me interesa el diseño de políticas públicas en los ámbitos social, laboral y de competencia; la economía financiera; y la política monetaria, fiscal y macroprudencial. Cuento con una sólida base cuantitativa en <strong>programación, análisis de datos y machine learning</strong>, con aplicaciones en econometría, evaluación de impacto y modelos de aprendizaje automático.",
+    "Como <strong>abogado</strong>, mi enfoque se centra en la regulación financiera, el derecho contractual y la intersección entre el derecho público, privado y laboral. Busco articular el análisis jurídico con evidencia económica para generar recomendaciones de política fundamentadas."
+  ],
+  "quote": "La interdisciplinariedad no es saber de todo, sino saber conectar lo que otros separan.",
+  "email": "headinvestigacion@colombiafintech.co",
+  "linkedin": "https://linkedin.com/in/adolfo-sebastian-rey-bolivar",
+  "github": "https://github.com/adolfo-s-rey-b",
+  "photo": "/Foto Adolfo.jpeg",
+  "currently": [
+    "Investigaciones sobre regulación macroprudencial del ecosistema Fintech en Colombia",
+    "Tesis de grado en economía financiera y política macroprudencial",
+    "Explorando aplicaciones de machine learning en economía de la salud"
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "experience": [
+    {
+      "dates": "Jun 2025 - Pres.",
+      "title": "Director de Investigaciones y Proyectos",
+      "company": "Colombia Fintech",
+      "description": null,
+      "items": [
+        "Formulación de investigaciones y estudios para la divulgación de información sobre el ecosistema fintech.",
+        "Estructuración de proyectos de consultoría con entidades del sector público, privado y multilateral.",
+        "Construcción de propuestas de regulación y política pública y articulación con evidencia que las soporte."
+      ]
+    },
+    {
+      "dates": "Jul 2024 - Jun 2025",
+      "title": "Analista Económico",
+      "company": "Colombia Fintech - Direcciones de Investigaciones y Regulación",
+      "description": null,
+      "items": [
+        "Análisis de datos para los informes de caracterización del ecosistema fintech en Colombia.",
+        "Ejecución de proyectos de consultoría con entidades del sector público, privado y multilateral.",
+        "Apoyo en la construcción de recomendaciones de regulación y política pública."
+      ]
+    },
+    {
+      "dates": "Jun 2021 - Ago 2022",
+      "title": "Analista Técnico",
+      "company": "Banco Mundial",
+      "description": "El proyecto se centró en estudiar las causas y determinantes de la multimorbilidad en tres microrredes hospitalarias de El Salvador a partir de diferentes metodologías estadísticas con el objetivo de generar recomendaciones de política sobre la ejecución del gasto en salud (prevención y mitigación del riesgo).",
+      "items": null
+    }
+  ],
+  "education": [
+    {
+      "dates": "Ene 2025 - Dic 2027",
+      "title": "Magíster en Economía",
+      "institution": "Universidad de Los Andes",
+      "detail": "Cursos destacados: Macroeconomía Financiera."
+    },
+    {
+      "dates": "Ago 2019 - Dic 2025",
+      "title": "Abogado",
+      "institution": "Universidad de Los Andes",
+      "detail": "Intereses: Derecho financiero, contractual y de seguros; Administrativo; Laboral y de la seguridad social."
+    },
+    {
+      "dates": "Ene 2019 - Dic 2023",
+      "title": "Economista, Grado Cum Laude",
+      "institution": "Universidad de Los Andes",
+      "detail": "Materias electivas: HE2 - El mercado de capitales contado por sus protagonistas; Economía laboral; Seminario de Temas Monetario-Bancarios; HE2 - Macro desde la Banca Central; Industrial Organization; Teoría y Política monetaria; y Seminario de economía, política social, pobreza y equidad."
+    },
+    {
+      "dates": "Ago 2021 - Jun 2025",
+      "title": "Opción en Matemáticas",
+      "institution": "Universidad de Los Andes",
+      "detail": "Énfasis: Análisis real, optimización dinámica y matemática estructural."
+    },
+    {
+      "dates": "Ene 2005 - Dic 2018",
+      "title": "Bachiller Académico",
+      "institution": "Gimnasio Moderno",
+      "detail": "Extracurriculares: Director de la revista estudiantil y Secretario General del Modelo de Naciones Unidas."
+    }
+  ],
+  "skills": [
+    {
+      "category": "Programación y Datos",
+      "detail": "Machine learning, deep learning (redes neuronales), manejo experto de bases de datos y algoritmos."
+    },
+    {
+      "category": "Economía y Finanzas",
+      "detail": "Modelos teóricos y econométricos (evaluación de impacto), valoración de activos y derivados, cuantificación del riesgo financiero."
+    },
+    {
+      "category": "Derecho",
+      "detail": "Análisis de regulación, investigación jurisprudencial, sistematización del conocimiento."
+    }
+  ],
+  "languages": [
+    { "name": "Español", "level": "Nativo" },
+    { "name": "Inglés", "level": "C1" },
+    { "name": "Francés", "level": "B1" }
+  ],
+  "seminars": [
+    "Derecho Contractual",
+    "Derecho y Tecnología GECTI",
+    "Público Administrativo",
+    "Trabajo y Derecho"
+  ]
+}

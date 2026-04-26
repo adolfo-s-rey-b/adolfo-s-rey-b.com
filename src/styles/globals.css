@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* KaTeX CSS — required for math rendering in notes and blog posts */
+@import 'katex/dist/katex.min.css';
+
+/* Custom text selection highlight */
+::selection {
+  background-color: #5e026e;
+  color: white;
+}
+
+/* Smooth scroll for anchor links in notes TOC */
+html {
+  scroll-behavior: smooth;
+}

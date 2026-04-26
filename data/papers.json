@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "type": "Working Paper",
+    "title": "Determinantes de la multimorbilidad en El Salvador: Un enfoque de aprendizaje automático para la política pública de salud.",
+    "authors": "Rey, Adolfo S.; Coautor Ficticio, J.",
+    "year": "2023",
+    "tags": ["Economía de la Salud", "Machine Learning", "Política Pública"],
+    "abstract": "Este estudio analiza las causas y determinantes de la multimorbilidad en tres microrredes hospitalarias de El Salvador. Utilizando diversas metodologías estadísticas y algoritmos de aprendizaje automático, el documento genera recomendaciones de política enfocadas en la eficiencia de la ejecución del gasto en salud.",
+    "link": "#",
+    "pdf": "#"
+  },
+  {
+    "id": 2,
+    "type": "Publicación",
+    "title": "Regulación Macroprudencial en el Ecosistema Fintech: Retos y Oportunidades en Colombia.",
+    "authors": "Rey, Adolfo S.",
+    "year": "2024",
+    "tags": ["Regulación Financiera", "Fintech", "Derecho"],
+    "abstract": "A medida que el ecosistema Fintech crece, la necesidad de una regulación que equilibre la innovación con la estabilidad financiera se vuelve primordial. Este artículo propone un marco de política pública y regulación macroprudencial basado en evidencia empírica.",
+    "link": "#",
+    "pdf": null
+  }
+]
