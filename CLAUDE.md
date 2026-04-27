@@ -4,24 +4,29 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal academic website for Adolfo S. Rey B. (Economist & Lawyer / Colombia Fintech). Built with **Next.js 14 (Pages Router)** and **static export** (`output: 'export'`, `trailingSlash: true`). Served via nginx inside the Docker stack defined in `~/server-stack/`.
+Personal academic website for Adolfo S. Rey B. (Economist & Lawyer / Colombia Fintech). Built with **Next.js 14 (Pages Router)** and **static export** (`output: 'export'`, `trailingSlash: true`). Hosted on **Cloudflare Pages** — `https://adolfo-s-rey-b.com`.
 
 Full technical documentation is in `configuracion.md`.
 
 ## Build & Deploy
 
+El sitio se publica automáticamente: cualquier push a `main` en GitHub dispara GitHub Actions → `npm run build` → Cloudflare Pages CDN.
+
 ```bash
-# From ~/server-stack/ — rebuild and deploy
-docker compose restart nextjs_compiler
+# Deploy automático (el cron de 5 min lo hace solo)
+# Para forzar deploy inmediato:
+bash ~/server-stack/scripts/auto-sync.sh
 
-# Watch build logs
-docker logs nextjs_daemon -f
+# O manualmente:
+cd ~/server-stack/website/website-source
+git add . && git commit -m "descripción del cambio" && git push
 
-# Verify build
-docker logs nextjs_daemon --tail 30
+# Ver estado del último deploy:
+# https://github.com/adolfo-s-rey-b/adolfo-s-rey-b.com/actions
+
+# Preview URL: https://adolfo-s-rey-b.pages.dev
+# Producción:  https://adolfo-s-rey-b.com
 ```
-
-The `nginx_core` container serves `website-public/` on port 80. Nginx config is at `~/server-stack/website/nginx.conf`.
 
 ## Architecture
 
