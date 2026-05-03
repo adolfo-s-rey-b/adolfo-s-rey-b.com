@@ -17,7 +17,7 @@ import os
 import re
 import shutil
 import sys
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 # ── Rutas ──────────────────────────────────────────────────────────────────────
@@ -249,6 +249,96 @@ def process_mapping(mapping: dict, vault_root: Path, notes_root: Path) -> int:
     return copied
 
 
+# ── Digital Garden (#publicar) ─────────────────────────────────────────────────
+
+def _strip_code_blocks(content: str) -> str:
+    """Elimina bloques de código para no detectar tags dentro de ellos."""
+    content = re.sub(r"```.*?```", "", content, flags=re.DOTALL)
+    content = re.sub(r"`[^`\n]+`", "", content)
+    return content
+
+
+def has_publicar_tag(content: str) -> bool:
+    return bool(re.search(r"(?<!\S)#publicar\b", _strip_code_blocks(content)))
+
+
+def has_blog_tag(content: str) -> bool:
+    return bool(re.search(r"(?<!\S)#blog\b", _strip_code_blocks(content)))
+
+
+def _build_publicar_frontmatter(meta: dict, filename: str) -> str:
+    """Construye frontmatter YAML para notas publicadas."""
+    title = meta.get("title") or title_from_filename(filename)
+    date_str = meta.get("date") or date.today().isoformat()
+    lines = ["---", f'title: "{title}"', f'date: "{date_str}"']
+    for k, v in meta.items():
+        if k in ("title", "date"):
+            continue
+        if isinstance(v, str):
+            lines.append(f'{k}: "{v}"')
+        else:
+            lines.append(f"{k}: {v}")
+    lines.append("---")
+    return "\n".join(lines) + "\n"
+
+
+def process_publicar_notes(vault_root: Path, website_root: Path) -> int:
+    """Copia notas marcadas con #publicar del vault al sitio web.
+
+    - #publicar + #blog → content/blog/<slug>.md
+    - #publicar (sin #blog) → content/notes/<slug>/index.md
+    """
+    copied = 0
+
+    for src_file in sorted(vault_root.rglob("*.md")):
+        if any(part.startswith(".") for part in src_file.parts):
+            continue  # skip .obsidian, .git, etc.
+
+        try:
+            raw = src_file.read_text(encoding="utf-8")
+        except Exception:
+            continue
+
+        if not has_publicar_tag(raw):
+            continue
+
+        is_blog = has_blog_tag(raw)
+
+        # Convertir sintaxis Obsidian y extraer/construir frontmatter
+        converted = convert_obsidian_to_standard(raw)
+        if has_frontmatter(converted):
+            meta, body = parse_frontmatter(converted)
+        else:
+            meta, body = {}, converted
+
+        fm = _build_publicar_frontmatter(meta, src_file.name)
+        final_content = fm + "\n" + body.lstrip("\n")
+
+        # Determinar destino
+        slug = slugify(src_file.stem)
+        if is_blog:
+            dest_dir = website_root / "content" / "blog"
+            dest_dir.mkdir(parents=True, exist_ok=True)
+            dest_file = dest_dir / f"{slug}.md"
+        else:
+            dest_dir = website_root / "content" / "notes" / slug
+            dest_dir.mkdir(parents=True, exist_ok=True)
+            dest_file = dest_dir / "index.md"
+
+        should_copy = True
+        if dest_file.exists():
+            if dest_file.read_text(encoding="utf-8") == final_content:
+                should_copy = False
+
+        if should_copy:
+            dest_file.write_text(final_content, encoding="utf-8")
+            dest_type = "blog" if is_blog else "notes"
+            print(f"  [#publicar→{dest_type}] {dest_file.relative_to(website_root)}  ←  {src_file.name}")
+            copied += 1
+
+    return copied
+
+
 # ── Main ───────────────────────────────────────────────────────────────────────
 
 def main():
@@ -280,6 +370,16 @@ def main():
         else:
             print(f"  {changed} archivo(s) procesado(s).")
         print()
+
+    # ── Digital Garden: notas con #publicar ───────────────────────────────────
+    print("Procesando Digital Garden (#publicar)...")
+    publicar_changed = process_publicar_notes(vault_root, WEBSITE_ROOT)
+    total_changed += publicar_changed
+    if publicar_changed == 0:
+        print("  Sin notas con #publicar nuevas o modificadas.")
+    else:
+        print(f"  {publicar_changed} nota(s) publicada(s).")
+    print()
 
     print(f"Total: {total_changed} archivo(s) modificado(s).")
 
