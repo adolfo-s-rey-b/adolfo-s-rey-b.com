@@ -1,90 +1,173 @@
 {
-  "experience": [
-    {
-      "dates": "Jun 2025 - Pres.",
-      "title": "Director de Investigaciones y Proyectos",
-      "company": "Colombia Fintech",
-      "description": null,
-      "items": [
-        "Formulación de investigaciones y estudios para la divulgación de información sobre el ecosistema fintech.",
-        "Estructuración de proyectos de consultoría con entidades del sector público, privado y multilateral.",
-        "Construcción de propuestas de regulación y política pública y articulación con evidencia que las soporte."
-      ]
-    },
-    {
-      "dates": "Jul 2024 - Jun 2025",
-      "title": "Analista Económico",
-      "company": "Colombia Fintech - Direcciones de Investigaciones y Regulación",
-      "description": null,
-      "items": [
-        "Análisis de datos para los informes de caracterización del ecosistema fintech en Colombia.",
-        "Ejecución de proyectos de consultoría con entidades del sector público, privado y multilateral.",
-        "Apoyo en la construcción de recomendaciones de regulación y política pública."
-      ]
-    },
-    {
-      "dates": "Jun 2021 - Ago 2022",
-      "title": "Analista Técnico",
-      "company": "Banco Mundial",
-      "description": "El proyecto se centró en estudiar las causas y determinantes de la multimorbilidad en tres microrredes hospitalarias de El Salvador a partir de diferentes metodologías estadísticas con el objetivo de generar recomendaciones de política sobre la ejecución del gasto en salud (prevención y mitigación del riesgo).",
-      "items": null
-    }
-  ],
   "education": [
     {
-      "dates": "Ene 2025 - Dic 2027",
-      "title": "Magíster en Economía",
-      "institution": "Universidad de Los Andes",
-      "detail": "Cursos destacados: Macroeconomía Financiera."
+      "id": "ma-economics",
+      "dates": { "en": "Jan 2025 – Dec 2028", "es": "Ene 2025 – Dic 2028" },
+      "degree": { "en": "MA in Economics", "es": "Magíster en Economía" },
+      "institution": "Universidad de los Andes",
+      "detail": [
+        {
+          "en": "Expected December 2028.",
+          "es": "Fecha esperada: diciembre de 2028."
+        },
+        {
+          "en": "Selected graduate coursework: Financial Macroeconomics; Models of Social Interactions.",
+          "es": "Cursos de posgrado destacados: Macroeconomía Financiera; Modelos de Interacciones Sociales."
+        }
+      ]
     },
     {
-      "dates": "Ago 2019 - Dic 2025",
-      "title": "Abogado",
-      "institution": "Universidad de Los Andes",
-      "detail": "Intereses: Derecho financiero, contractual y de seguros; Administrativo; Laboral y de la seguridad social."
+      "id": "llb-law",
+      "dates": { "en": "Aug 2019 – Jun 2025", "es": "Ago 2019 – Jun 2025" },
+      "degree": { "en": "LLB in Law", "es": "Abogado" },
+      "institution": "Universidad de los Andes",
+      "detail": [
+        {
+          "en": "Emphasis: financial regulation, contract law.",
+          "es": "Énfasis: regulación financiera, derecho contractual."
+        }
+      ]
     },
     {
-      "dates": "Ene 2019 - Dic 2023",
-      "title": "Economista, Grado Cum Laude",
-      "institution": "Universidad de Los Andes",
-      "detail": "Materias electivas: HE2 - El mercado de capitales contado por sus protagonistas; Economía laboral; Seminario de Temas Monetario-Bancarios; HE2 - Macro desde la Banca Central; Industrial Organization; Teoría y Política monetaria; y Seminario de economía, política social, pobreza y equidad."
+      "id": "ba-economics",
+      "dates": { "en": "Jan 2019 – Dec 2023", "es": "Ene 2019 – Dic 2023" },
+      "degree": { "en": "BA in Economics", "es": "Economista" },
+      "institution": "Universidad de los Andes",
+      "detail": [
+        {
+          "en": "Cum Laude, top 3% of the graduating class. GPA 4.66 / 5.0.",
+          "es": "Cum Laude, 3% superior de la promoción. Promedio 4,66 / 5,0."
+        },
+        {
+          "en": "Selected electives: Capital Markets; Labor Economics; Seminar on Monetary and Banking Topics; Macroeconomics from the Central Bank; Industrial Organization; Monetary Theory and Policy; Seminar on Economics, Social Policy, Poverty and Equity.",
+          "es": "Materias electivas destacadas: El mercado de capitales contado por sus protagonistas; Economía laboral; Seminario de temas monetario-bancarios; Macro desde la banca central; Organización industrial; Teoría y política monetaria; Seminario de economía, política social, pobreza y equidad."
+        }
+      ]
     },
     {
-      "dates": "Ago 2021 - Jun 2025",
-      "title": "Opción en Matemáticas",
-      "institution": "Universidad de Los Andes",
-      "detail": "Énfasis: Análisis real, optimización dinámica y matemática estructural."
+      "id": "minor-mathematics",
+      "dates": { "en": "Jan 2020 – Nov 2025", "es": "Ene 2020 – Nov 2025" },
+      "degree": { "en": "Minor in Mathematics", "es": "Opción en Matemáticas" },
+      "institution": "Universidad de los Andes",
+      "detail": [
+        {
+          "en": "Real and abstract analysis, dynamic optimization, measure theory.",
+          "es": "Análisis real y abstracto, optimización dinámica, teoría de la medida."
+        }
+      ]
     },
     {
-      "dates": "Ene 2005 - Dic 2018",
-      "title": "Bachiller Académico",
-      "institution": "Gimnasio Moderno",
-      "detail": "Extracurriculares: Director de la revista estudiantil y Secretario General del Modelo de Naciones Unidas."
+      "id": "minor-french",
+      "dates": { "en": "Aug 2021 – Dec 2025", "es": "Ago 2021 – Dic 2025" },
+      "degree": { "en": "Minor in French", "es": "Opción en Francés" },
+      "institution": "Universidad de los Andes",
+      "detail": []
     }
   ],
+
+  "employment": [
+    {
+      "id": "cf-head",
+      "dates": { "en": "Jun 2025 – present", "es": "Jun 2025 – presente" },
+      "role": {
+        "en": "Head of Research and Projects",
+        "es": "Director de Investigaciones y Proyectos"
+      },
+      "organization": "Colombia Fintech",
+      "items": [
+        {
+          "en": "Design and lead the studies that produce the sector's reference statistics on digital lending, payments and financial inclusion.",
+          "es": "Diseño y dirijo los estudios que producen las estadísticas de referencia del sector sobre crédito digital, pagos e inclusión financiera."
+        },
+        {
+          "en": "Build the empirical case behind the association's regulatory and public policy proposals.",
+          "es": "Construyo la evidencia empírica que respalda las propuestas de regulación y política pública de la asociación."
+        },
+        {
+          "en": "Coordinate applied research with public sector, private sector and multilateral institutions.",
+          "es": "Coordino investigación aplicada con entidades del sector público, privado y multilateral."
+        }
+      ]
+    },
+    {
+      "id": "cf-analyst",
+      "dates": { "en": "Jul 2024 – Jun 2025", "es": "Jul 2024 – Jun 2025" },
+      "role": { "en": "Economic Analyst", "es": "Analista Económico" },
+      "organization": "Colombia Fintech",
+      "items": [
+        {
+          "en": "Data analysis for the reports characterizing Colombia's fintech ecosystem.",
+          "es": "Análisis de datos para los informes de caracterización del ecosistema fintech en Colombia."
+        },
+        {
+          "en": "Executed applied research projects with public sector, private sector and multilateral institutions.",
+          "es": "Ejecución de proyectos de investigación aplicada con entidades del sector público, privado y multilateral."
+        },
+        {
+          "en": "Supported the construction of regulatory and public policy recommendations.",
+          "es": "Apoyo en la construcción de recomendaciones de regulación y política pública."
+        }
+      ]
+    },
+    {
+      "id": "world-bank",
+      "dates": { "en": "Jun 2021 – Apr 2022", "es": "Jun 2021 – Abr 2022" },
+      "role": { "en": "Quantitative Analyst", "es": "Analista Cuantitativo" },
+      "organization": {
+        "en": "World Bank–funded project (PHGF Grant TF0A8267), El Salvador",
+        "es": "Proyecto financiado por el Banco Mundial (PHGF Grant TF0A8267), El Salvador"
+      },
+      "items": [
+        {
+          "en": "Integrated three administrative health record systems and classified 12,618 ICD-10 subcategories into 123 chronic condition groups.",
+          "es": "Integré tres sistemas de registros administrativos de salud y clasifiqué 12.618 subcategorías CIE-10 en 123 grupos de condiciones crónicas."
+        },
+        {
+          "en": "Estimated disease clusters using structural equation models and K-means, cross-validated by sex, age group and region.",
+          "es": "Estimé clusters de enfermedad mediante modelos de ecuaciones estructurales y K-means, con validación cruzada por sexo, grupo etario y región."
+        },
+        {
+          "en": "Applied network analysis to inter-facility referral flows and estimated service costs for the priority clusters.",
+          "es": "Apliqué análisis de red a los flujos de remisión entre establecimientos y estimé los costos de servicio de los clusters prioritarios."
+        }
+      ]
+    }
+  ],
+
   "skills": [
     {
-      "category": "Programación y Datos",
-      "detail": "Machine learning, deep learning (redes neuronales), manejo experto de bases de datos y algoritmos."
+      "label": { "en": "Programming and data", "es": "Programación y datos" },
+      "value": "Stata (advanced), R (advanced), Python (advanced), SQL, Git, LaTeX."
     },
     {
-      "category": "Economía y Finanzas",
-      "detail": "Modelos teóricos y econométricos (evaluación de impacto), valoración de activos y derivados, cuantificación del riesgo financiero."
+      "label": { "en": "Methods", "es": "Métodos" },
+      "value": {
+        "en": "applied econometrics and impact evaluation, machine learning, network analysis.",
+        "es": "econometría aplicada y evaluación de impacto, aprendizaje automático, análisis de redes."
+      }
     },
     {
-      "category": "Derecho",
-      "detail": "Análisis de regulación, investigación jurisprudencial, sistematización del conocimiento."
+      "label": { "en": "Languages", "es": "Idiomas" },
+      "value": {
+        "en": "Spanish (native), English (full professional), French (professional working).",
+        "es": "español (nativo), inglés (competencia profesional plena), francés (competencia profesional)."
+      }
     }
   ],
-  "languages": [
-    { "name": "Español", "level": "Nativo" },
-    { "name": "Inglés", "level": "C1" },
-    { "name": "Francés", "level": "B1" }
+
+  "honors": [
+    {
+      "en": "Cum Laude, top 3% of the graduating class, BA Economics.",
+      "es": "Cum Laude, 3% superior de la promoción, pregrado en Economía."
+    },
+    {
+      "en": "National recognition for top performance in Saber Pro, Colombia's mandatory national higher-education exit examination.",
+      "es": "Reconocimiento Mejores Saber Pro y TyT: distinción nacional por desempeño sobresaliente en Saber Pro, el examen de Estado obligatorio de salida de la educación superior en Colombia."
+    }
   ],
-  "seminars": [
-    "Derecho Contractual",
-    "Derecho y Tecnología GECTI",
-    "Público Administrativo",
-    "Trabajo y Derecho"
-  ]
+
+  "additionalCoursework": {
+    "en": "Additional coursework: 40+ online certificates in statistics, programming and quantitative methods (Coursera; Johns Hopkins, Duke, Michigan, Imperial College, HKUST, UC San Diego).",
+    "es": "Formación adicional: más de 40 certificados en línea en estadística, programación y métodos cuantitativos (Coursera; Johns Hopkins, Duke, Michigan, Imperial College, HKUST, UC San Diego)."
+  }
 }

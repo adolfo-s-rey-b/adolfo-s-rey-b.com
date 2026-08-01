@@ -1,0 +1,43 @@
+{
+  "applied": [
+    {
+      "id": "multimorbidity-el-salvador",
+      "title": {
+        "en": "Multimorbidity and health expenditure in El Salvador",
+        "es": "Multimorbilidad y gasto en salud en El Salvador"
+      },
+      "meta": {
+        "en": "World Bank–funded project (PHGF Grant TF0A8267) · Ministry of Health of El Salvador · 2021–2022",
+        "es": "Proyecto financiado por el Banco Mundial (PHGF Grant TF0A8267) · Ministerio de Salud de El Salvador · 2021–2022"
+      },
+      "body": {
+        "en": "A study of chronic-disease multimorbidity across three hospital micronetworks (Apastepeque, La Palma, Jiquilisco), conducted for the Ministry of Health under a World Bank–funded non-communicable diseases project. I was responsible for the full data pipeline and quantitative analysis: integrating three administrative health record systems covering population registries, outpatient consultations and hospital admissions; classifying 12,618 ICD-10 subcategories into 123 chronic condition groups; estimating disease clusters using two independent methods — structural equation models for conditional probabilities and K-means clustering — cross-validated across subsamples by sex, age group and region; applying network analysis to inter-facility referral flows to identify gaps in the care network; and estimating service costs for the priority clusters. Results informed the Ministry's recommendations on targeting health expenditure toward prevention.",
+        "es": "Un estudio de la multimorbilidad por enfermedades crónicas en tres microrredes hospitalarias (Apastepeque, La Palma, Jiquilisco), realizado para el Ministerio de Salud dentro de un proyecto de enfermedades no transmisibles financiado por el Banco Mundial. Estuve a cargo de todo el pipeline de datos y del análisis cuantitativo: integrar tres sistemas de registros administrativos de salud que cubren registros poblacionales, consultas externas y hospitalizaciones; clasificar 12.618 subcategorías CIE-10 en 123 grupos de condiciones crónicas; estimar clusters de enfermedad por dos métodos independientes —modelos de ecuaciones estructurales para probabilidades condicionales y K-means—, con validación cruzada en submuestras por sexo, grupo etario y región; aplicar análisis de red a los flujos de remisión entre establecimientos para identificar vacíos en la red de atención; y estimar los costos de servicio de los clusters prioritarios. Los resultados alimentaron las recomendaciones del Ministerio sobre la focalización del gasto en salud hacia la prevención."
+      },
+      "note": {
+        "en": "The project report is not publicly available.",
+        "es": "El informe del proyecto no es público."
+      }
+    }
+  ],
+
+  "_comment_legal_scholarship": [
+    "PENDIENTE — bloque *Legal scholarship* del §7.2(4). NO se renderiza mientras",
+    "esté vacío: el §7.2 prohíbe dejar un encabezado sin contenido.",
+    "",
+    "(a) Publicación de derecho, repositorio Uniandes.",
+    "    URL: https://repositorio.uniandes.edu.co/entities/publication/eaaaf733-0804-47c7-849c-36354ce2ce32",
+    "    Adolfo debe suministrar: título exacto; coautores en orden, si los hay; año;",
+    "    tipo (artículo de revista / tesis de grado / documento de semillero / capítulo);",
+    "    nombre de la revista o serie, si aplica; y un resumen de 2 a 3 frases en inglés.",
+    "    No renderizar hasta tener los cinco primeros campos.",
+    "",
+    "(b) Capítulo de libro, forthcoming.",
+    "    Adolfo debe suministrar: título del capítulo; título del libro, editores y",
+    "    editorial; año esperado de publicación; coautores, si los hay; y confirmación",
+    "    de que el capítulo está aceptado o contratado.",
+    "    Si NO está aceptado formalmente, no se publica: 'forthcoming' sobre algo no",
+    "    aceptado es una afirmación falsa y es exactamente lo que un comité verifica."
+  ],
+  "legalScholarship": []
+}

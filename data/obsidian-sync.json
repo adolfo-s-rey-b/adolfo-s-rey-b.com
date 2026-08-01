@@ -1,21 +1,23 @@
 {
   "vaultRoot": "/home/adolfo-s-rey-b/obsidian/obsidian-vault",
-  "notesRoot": "/home/adolfo-s-rey-b/website/website-source/content/notes",
+  "notesRoot": "/home/adolfo-s-rey-b/website/website-source/content/notes/class",
+  "readingRoot": "/home/adolfo-s-rey-b/website/website-source/content/notes/reading",
+  "commentaryRoot": "/home/adolfo-s-rey-b/website/website-source/content/notes/commentary",
   "mappings": [
     {
-      "subject": "teoria-juegos",
+      "subject": "game-theory",
       "vaultPath": "Economía/Básicas/Micro/Teoría de Juegos",
       "flatten": true,
       "enabled": true
     },
     {
-      "subject": "macroeconomia",
+      "subject": "macroeconomics",
       "vaultPath": "Economía/Básicas/Macro/Macroeconomía II/Notas - Modern Macroeconomics (Chugh)",
       "flatten": true,
       "enabled": true
     },
     {
-      "subject": "microeconomia",
+      "subject": "microeconomics",
       "vaultPath": "Economía/Básicas/Micro/Microeconomía 3",
       "flatten": true,
       "enabled": false,
