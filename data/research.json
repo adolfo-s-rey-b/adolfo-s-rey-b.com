@@ -11,8 +11,14 @@
         "es": "Proyecto financiado por el Banco Mundial (PHGF Grant TF0A8267) · Ministerio de Salud de El Salvador · 2021–2022"
       },
       "body": {
-        "en": "A study of chronic-disease multimorbidity across three hospital micronetworks (Apastepeque, La Palma, Jiquilisco), conducted for the Ministry of Health under a World Bank–funded non-communicable diseases project. I was responsible for the full data pipeline and quantitative analysis: integrating three administrative health record systems covering population registries, outpatient consultations and hospital admissions; classifying 12,618 ICD-10 subcategories into 123 chronic condition groups; estimating disease clusters using two independent methods — structural equation models for conditional probabilities and K-means clustering — cross-validated across subsamples by sex, age group and region; applying network analysis to inter-facility referral flows to identify gaps in the care network; and estimating service costs for the priority clusters. Results informed the Ministry's recommendations on targeting health expenditure toward prevention.",
-        "es": "Un estudio de la multimorbilidad por enfermedades crónicas en tres microrredes hospitalarias (Apastepeque, La Palma, Jiquilisco), realizado para el Ministerio de Salud dentro de un proyecto de enfermedades no transmisibles financiado por el Banco Mundial. Estuve a cargo de todo el pipeline de datos y del análisis cuantitativo: integrar tres sistemas de registros administrativos de salud que cubren registros poblacionales, consultas externas y hospitalizaciones; clasificar 12.618 subcategorías CIE-10 en 123 grupos de condiciones crónicas; estimar clusters de enfermedad por dos métodos independientes —modelos de ecuaciones estructurales para probabilidades condicionales y K-means—, con validación cruzada en submuestras por sexo, grupo etario y región; aplicar análisis de red a los flujos de remisión entre establecimientos para identificar vacíos en la red de atención; y estimar los costos de servicio de los clusters prioritarios. Los resultados alimentaron las recomendaciones del Ministerio sobre la focalización del gasto en salud hacia la prevención."
+        "en": [
+          "A study of chronic-disease multimorbidity across three hospital micronetworks (Apastepeque, La Palma, Jiquilisco), conducted for the Ministry of Health under a World Bank–funded non-communicable diseases project.",
+          "I was responsible for the full data pipeline and quantitative analysis: integrating three administrative health record systems covering population registries, outpatient consultations and hospital admissions; classifying 12,618 ICD-10 subcategories into 123 chronic condition groups; estimating disease clusters using two independent methods — structural equation models for conditional probabilities and K-means clustering — cross-validated across subsamples by sex, age group and region; applying network analysis to inter-facility referral flows to identify gaps in the care network; and estimating service costs for the priority clusters. Results informed the Ministry's recommendations on targeting health expenditure toward prevention."
+        ],
+        "es": [
+          "Un estudio de la multimorbilidad por enfermedades crónicas en tres microrredes hospitalarias (Apastepeque, La Palma, Jiquilisco), realizado para el Ministerio de Salud dentro de un proyecto de enfermedades no transmisibles financiado por el Banco Mundial.",
+          "Estuve a cargo de todo el pipeline de datos y del análisis cuantitativo: integrar tres sistemas de registros administrativos de salud que cubren registros poblacionales, consultas externas y hospitalizaciones; clasificar 12.618 subcategorías CIE-10 en 123 grupos de condiciones crónicas; estimar clusters de enfermedad por dos métodos independientes —modelos de ecuaciones estructurales para probabilidades condicionales y K-means—, con validación cruzada en submuestras por sexo, grupo etario y región; aplicar análisis de red a los flujos de remisión entre establecimientos para identificar vacíos en la red de atención; y estimar los costos de servicio de los clusters prioritarios. Los resultados alimentaron las recomendaciones del Ministerio sobre la focalización del gasto en salud hacia la prevención."
+        ]
       },
       "note": {
         "en": "The project report is not publicly available.",
@@ -20,7 +26,6 @@
       }
     }
   ],
-
   "_comment_legal_scholarship": [
     "PENDIENTE — bloque *Legal scholarship* del §7.2(4). NO se renderiza mientras",
     "esté vacío: el §7.2 prohíbe dejar un encabezado sin contenido.",

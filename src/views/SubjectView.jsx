@@ -26,7 +26,7 @@ export default function SubjectView({
         <Link href={href('notes', locale)}>{copy.labels.backToNotes}</Link>
       </p>
 
-      <h1 className="mt-4 text-h1 font-semibold">{subject.title}</h1>
+      <h1 className="mt-4 text-h1">{subject.title}</h1>
       <p className="mt-2 text-muted">{subject.description}</p>
       <p className="mt-1 text-meta text-muted">
         {[subject.professor, subject.semester].filter(Boolean).join(' · ')}

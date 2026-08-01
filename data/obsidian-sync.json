@@ -1,8 +1,6 @@
 {
   "vaultRoot": "/home/adolfo-s-rey-b/obsidian/obsidian-vault",
   "notesRoot": "/home/adolfo-s-rey-b/website/website-source/content/notes/class",
-  "readingRoot": "/home/adolfo-s-rey-b/website/website-source/content/notes/reading",
-  "commentaryRoot": "/home/adolfo-s-rey-b/website/website-source/content/notes/commentary",
   "mappings": [
     {
       "subject": "game-theory",
@@ -23,5 +21,6 @@
       "enabled": false,
       "_note": "Carpeta aún no creada en la bóveda. Cambiar enabled a true cuando exista."
     }
-  ]
+  ],
+  "blogRoot": "/home/adolfo-s-rey-b/website/website-source/content/blog"
 }

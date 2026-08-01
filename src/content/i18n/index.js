@@ -6,6 +6,7 @@ const enHome = require('./en/home.json');
 const enResearch = require('./en/research.json');
 const enTeaching = require('./en/teaching.json');
 const enNotes = require('./en/notes.json');
+const enBlog = require('./en/blog.json');
 const enCode = require('./en/code.json');
 const enCv = require('./en/cv.json');
 const enContact = require('./en/contact.json');
@@ -15,6 +16,7 @@ const esHome = require('./es/home.json');
 const esResearch = require('./es/research.json');
 const esTeaching = require('./es/teaching.json');
 const esNotes = require('./es/notes.json');
+const esBlog = require('./es/blog.json');
 const esCode = require('./es/code.json');
 const esCv = require('./es/cv.json');
 const esContact = require('./es/contact.json');
@@ -26,6 +28,7 @@ const COPY = {
     research: enResearch,
     teaching: enTeaching,
     notes: enNotes,
+    blog: enBlog,
     code: enCode,
     cv: enCv,
     contact: enContact,
@@ -36,6 +39,7 @@ const COPY = {
     research: esResearch,
     teaching: esTeaching,
     notes: esNotes,
+    blog: esBlog,
     code: esCode,
     cv: esCv,
     contact: esContact,

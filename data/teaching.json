@@ -12,61 +12,6 @@
     "Revisar ese listado al añadir un semestre nuevo, y volver a correr la",
     "verificación de enlaces antes de publicar."
   ],
-  "appointments": [
-    {
-      "id": "teaching-fellow",
-      "role": {
-        "en": "Teaching Fellow — profesor complementario",
-        "es": "Profesor complementario"
-      },
-      "years": {
-        "en": "2024–present",
-        "es": "2024–presente"
-      },
-      "groups": [
-        {
-          "label": {
-            "en": "Advanced theory",
-            "es": "Teoría avanzada"
-          },
-          "courses": {
-            "en": "Game Theory (Oskar Nupia); Microeconomics III (Oskar Nupia; Andrés Dávila-Ospina); Industrial Organization (Hernán Vallejo)",
-            "es": "Teoría de Juegos (Oskar Nupia); Microeconomía 3 (Oskar Nupia; Andrés Dávila-Ospina); Organización Industrial (Hernán Vallejo)"
-          }
-        },
-        {
-          "label": {
-            "en": "Core sequence",
-            "es": "Ciclo básico"
-          },
-          "courses": {
-            "en": "Introduction to Macroeconomics and Macroeconomics (Hernán Vallejo); Consumer and Firm Theory (Hernán Vallejo); Introduction to the Colombian Economy (Alberto Carrasquilla)",
-            "es": "Introducción a la Macroeconomía y Macroeconomía (Hernán Vallejo); Teoría del Consumidor y la Firma (Hernán Vallejo); Introducción a la Economía Colombiana (Alberto Carrasquilla)"
-          }
-        }
-      ]
-    },
-    {
-      "id": "undergraduate-ta",
-      "role": {
-        "en": "Undergraduate Teaching Assistant",
-        "es": "Monitor de pregrado"
-      },
-      "years": {
-        "en": "2019–2023",
-        "es": "2019–2023"
-      },
-      "groups": [
-        {
-          "label": null,
-          "courses": {
-            "en": "Game Theory (Oskar Nupia); Microeconomics III (Oskar Nupia); Econometrics I (Ramón Rosales); Economic History (Fabio Sánchez)",
-            "es": "Teoría de Juegos (Oskar Nupia); Microeconomía 3 (Oskar Nupia); Econometría 1 (Ramón Rosales); Historia Económica (Fabio Sánchez)"
-          }
-        }
-      ]
-    }
-  ],
   "history": [
     {
       "period": "2026-1",
@@ -91,7 +36,11 @@
           "professor": "Hernán Vallejo",
           "programUrl": null
         }
-      ]
+      ],
+      "role": {
+        "en": "Teaching Fellow",
+        "es": "Profesor complementario"
+      }
     },
     {
       "period": "2025-2",
@@ -116,7 +65,11 @@
           "professor": "Hernán Vallejo",
           "programUrl": "https://economia.uniandes.edu.co/sites/economia/files/media/pregrado/pracademicos/202520/Econ-3672-Organización-Industrial-2025-20-Hernan-Vallejo.pdf"
         }
-      ]
+      ],
+      "role": {
+        "en": "Teaching Fellow",
+        "es": "Profesor complementario"
+      }
     },
     {
       "period": "2025-1",
@@ -141,7 +94,11 @@
           "professor": "Hernán Vallejo",
           "programUrl": "https://economia.uniandes.edu.co/sites/economia/files/media/pregrado/pracademicos/202510/Econ-2108-Fundamentos-De-Economia-2025-10-Hernan-Vallejo.pdf"
         }
-      ]
+      ],
+      "role": {
+        "en": "Teaching Fellow",
+        "es": "Profesor complementario"
+      }
     },
     {
       "period": "2024-2",
@@ -166,7 +123,11 @@
           "professor": "Hernán Vallejo",
           "programUrl": "https://economia.uniandes.edu.co/sites/economia/files/media/pregrado/pracademicos/202420/Econ-3672-Organización-Industrial-2024-20-Hernan-Vallejo.pdf"
         }
-      ]
+      ],
+      "role": {
+        "en": "Teaching Fellow",
+        "es": "Profesor complementario"
+      }
     },
     {
       "period": "2024-inter",
@@ -191,7 +152,11 @@
           "professor": "Andrés Dávila-Ospina",
           "programUrl": "https://economia.uniandes.edu.co/sites/economia/files/media/pregrado/pracademicos/202419/Econ-3123-Microeconomia-3-2024-19-Andres-Davila.pdf"
         }
-      ]
+      ],
+      "role": {
+        "en": "Teaching Fellow",
+        "es": "Profesor complementario"
+      }
     },
     {
       "period": "2024-1",
@@ -215,6 +180,55 @@
           },
           "professor": "Hernán Vallejo",
           "programUrl": "https://economia.uniandes.edu.co/sites/economia/files/media/pregrado/pracademicos/202410/Econ-2106-Teoria-Del-Consumidor-y-Firma-2024-10-Hernan-Vallejo.pdf"
+        }
+      ],
+      "role": {
+        "en": "Teaching Fellow",
+        "es": "Profesor complementario"
+      }
+    },
+    {
+      "period": "2019-2023",
+      "semester": {
+        "en": "2019 – 2023",
+        "es": "2019 – 2023"
+      },
+      "role": {
+        "en": "Undergraduate Teaching Assistant",
+        "es": "Monitor de pregrado"
+      },
+      "courses": [
+        {
+          "name": {
+            "en": "Game Theory",
+            "es": "Teoría de Juegos"
+          },
+          "professor": "Oskar Nupia",
+          "programUrl": null
+        },
+        {
+          "name": {
+            "en": "Microeconomics III",
+            "es": "Microeconomía 3"
+          },
+          "professor": "Oskar Nupia",
+          "programUrl": null
+        },
+        {
+          "name": {
+            "en": "Econometrics I",
+            "es": "Econometría 1"
+          },
+          "professor": "Ramón Rosales",
+          "programUrl": null
+        },
+        {
+          "name": {
+            "en": "Economic History",
+            "es": "Historia Económica"
+          },
+          "professor": "Fabio Sánchez",
+          "programUrl": null
         }
       ]
     }

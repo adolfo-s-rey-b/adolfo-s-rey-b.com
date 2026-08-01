@@ -6,16 +6,12 @@
     "en": "Academic CV (English)",
     "es": "Hoja de vida (Español)"
   },
-  "personalHeading": "Personal details",
-  "citizenship": "Citizenship: Colombia and the United States. Authorized to work in the U.S. without sponsorship.",
-  "website": "Website",
   "sections": {
     "education": "Education",
     "employment": "Employment",
     "teaching": "Teaching",
     "research": "Research",
     "skills": "Technical skills",
-    "languages": "Languages",
     "honors": "Honors"
   },
   "teachingSummary": [
@@ -24,5 +20,6 @@
   ],
   "teachingLink": "Full teaching record",
   "researchSummary": "Banking intermediation, credit regulation, monetary policy transmission and financial networks in emerging economies. Applied research for the Ministry of Health of El Salvador under a World Bank–funded project.",
-  "researchLink": "Research"
+  "researchLink": "Research",
+  "identityLine": "Bogotá, Colombia · Colombian and U.S. citizen · Authorized to work in the U.S. without sponsorship."
 }

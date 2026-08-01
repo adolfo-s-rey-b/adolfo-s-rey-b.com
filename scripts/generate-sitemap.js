@@ -15,13 +15,19 @@ const fs = require('fs');
 const path = require('path');
 
 const { SITE_URL, LOCALES, NAV, href, alternates } = require('../src/lib/routes');
-const { getSubjects, getLessonsForSubject } = require('../src/lib/markdown');
+const { getSubjects, getLessonsForSubject, getBlogPosts } = require('../src/lib/markdown');
 
 const entries = [];
 
 // Páginas de chrome: indexables en ambos locales, con hreflang recíproco.
 entries.push({ key: 'home', params: {}, bilingual: true });
 for (const key of NAV) entries.push({ key, params: {}, bilingual: true });
+
+// Entradas del blog: cada una está escrita en un solo idioma y la versión bajo
+// el otro locale se sirve con noindex, así que solo entra la que corresponde.
+for (const post of getBlogPosts()) {
+  entries.push({ key: 'post', params: { slug: post.slug }, only: post.lang });
+}
 
 // Notas de clase: el contenido está en español, así que solo se indexa el árbol
 // /es/. La versión en inglés se sirve con noindex (ver lib/props/notes.js), y
@@ -44,7 +50,7 @@ const today = new Date().toISOString().slice(0, 10);
 
 const urls = [];
 for (const entry of entries) {
-  const locales = entry.bilingual ? LOCALES : ['es'];
+  const locales = entry.bilingual ? LOCALES : [entry.only || 'es'];
   const alts = alternates(entry.key, entry.params);
 
   for (const locale of locales) {

@@ -27,7 +27,7 @@ check() {
 }
 
 echo "Invariantes de contenido:"
-check "sin el morado antiguo (#5e026e / #7b0391)"        '5e026e|7b0391'
+check "sin el granate de la pasada anterior"              '7a1e1e|fdfdfc|e5e3df'
 check "sin el coautor inventado"                          'ficticio'
 check "sin menciones a consultoría"                       'consultor[íi]a|consulting'
 check "sin los nombres prohibidos del §3.4"               'hofstetter|villamizar|riascos'
@@ -40,7 +40,7 @@ check "sin estilos prohibidos por el §6.1"                'rounded-(xl|2xl|3xl|
 echo
 echo "Rutas:"
 # Las rutas viejas solo pueden aparecer como ORIGEN de un redirect.
-old=$(grep -rniE 'teoria-juegos|/notes/macroeconomia|/notes/microeconomia|"/blog|"/github' src/ data/ 2>/dev/null || true)
+old=$(grep -rniE 'teoria-juegos|/notes/macroeconomia|/notes/microeconomia|"/github' src/ data/ 2>/dev/null || true)
 if [ -n "$old" ]; then
   printf '  ✗ rutas viejas referenciadas fuera de _redirects\n'
   printf '%s\n' "$old" | head -5 | sed 's/^/      /'

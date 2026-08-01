@@ -6,13 +6,13 @@
    sobre preflight y el render matemático de las notas no cambia. No moverlo arriba. */
 @import 'katex/dist/katex.min.css';
 
-/* ── Paleta (§6.3): cuatro valores más la regla. Nada más. ─────────────── */
+/* ── Paleta: cuatro valores más la regla. Nada más. ────────────────────── */
 :root {
-  --bg: #fdfdfc;
-  --text: #1a1a1a;
-  --muted: #6b6b6b; /* 5.23:1 sobre --bg → AA incluso a 14px */
-  --accent: #7a1e1e; /* 10.15:1 sobre --bg */
-  --rule: #e5e3df;
+  --bg: #ffffff;
+  --text: #1a1a1a; /* 16.9:1 sobre --bg */
+  --muted: #5f5f5f; /*  6.4:1 → AA incluso a 14px */
+  --accent: #5e026e; /* 12.3:1 → morado de marca */
+  --rule: #e6e6e6;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -48,10 +48,40 @@ body {
    tiempo de cómputo y NO cae al resto de la lista: cae al sans de preflight. */
 .site-root {
   font-family: var(--font-serif), Charter, 'Bitstream Charter', Georgia, serif;
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 19px;
+  line-height: 1.65;
   font-synthesis-weight: none;
   text-rendering: optimizeLegibility;
+}
+
+/* Serif para leer, sans para orientarse. El contraste entre familias es lo que
+   hace legible la jerarquía: encabezados, navegación y metadatos en sans; el
+   texto que de verdad se lee, en serif. */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.006em;
+}
+
+/* ── Prosa justificada ─────────────────────────────────────────────────── */
+/* Justificar SIN partir palabras abre ríos de blanco y empeora justo lo que se
+   quiere mejorar, así que `hyphens` va siempre junto a `text-align`. Funciona
+   porque el atributo lang es correcto por página y por artículo. */
+.prose-justify {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;
+}
+
+/* En una medida estrecha ni la partición salva la justificación. */
+@media (max-width: 640px) {
+  .prose-justify {
+    text-align: left;
+  }
 }
 
 /* ── Enlaces (§6.3): siempre subrayados, sin cambio de color al hover ──── */
@@ -80,6 +110,12 @@ a:hover {
 /* ── Utilidades mínimas ────────────────────────────────────────────────── */
 .tabular {
   font-variant-numeric: tabular-nums;
+}
+
+/* Metadatos, fechas, navegación y etiquetas: sans, para que no compitan con el
+   texto en serif. */
+.ui {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Marcas textuales [PDF] [Code] [Slides] — lo único que usa la mono */

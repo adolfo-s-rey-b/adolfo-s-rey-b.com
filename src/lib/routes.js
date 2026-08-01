@@ -16,16 +16,20 @@ const ROUTES = {
   research: '/research/',
   teaching: '/teaching/',
   notes: '/notes/',
+  blog: '/blog/',
   code: '/code/',
   cv: '/cv/',
   contact: '/contact/',
   subject: '/notes/class/[subject]/',
   lesson: '/notes/class/[subject]/[lesson]/',
+  post: '/blog/[slug]/',
 };
 
-// Los seis ítems de navegación del §4.1. El nombre del header enlaza a la home
-// y deliberadamente NO cuenta como ítem de navegación.
-const NAV = ['research', 'teaching', 'notes', 'code', 'cv', 'contact'];
+// El nombre del header enlaza a la home y deliberadamente NO cuenta como ítem
+// de navegación.
+// /notes/ son apuntes de los cursos que enseña; /blog/ son fichas de papers,
+// comentarios y policy briefs. Son cosas distintas y van separadas.
+const NAV = ['research', 'teaching', 'notes', 'blog', 'code', 'cv', 'contact'];
 
 function localize(path, locale) {
   if (locale === DEFAULT_LOCALE) return path;

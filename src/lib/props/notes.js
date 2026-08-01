@@ -1,16 +1,9 @@
 const { tDeep } = require('../i18n');
 const { baseProps } = require('./index');
-const {
-  getSubjects,
-  getLessonsForSubject,
-  getLessonBySlug,
-  getReadingNotes,
-  getCommentary,
-} = require('../markdown');
+const { getSubjects, getLessonsForSubject, getLessonBySlug } = require('../markdown');
 
-// Índice /notes/ — tres bloques (§4.3). Los bloques `reading` y `commentary`
-// llegan vacíos hoy, y la vista simplemente no los renderiza: nada de
-// "próximamente".
+// Índice /notes/ — solo notas de clase. Los escritos (fichas de papers,
+// comentarios, policy briefs) viven en /blog/.
 function notesIndexProps(locale) {
   const subjects = getSubjects().map((subject) => {
     const lessons = getLessonsForSubject(subject.id);
@@ -26,8 +19,6 @@ function notesIndexProps(locale) {
   return {
     ...baseProps(locale, 'notes', 'notes', { width: 'wide' }),
     subjects,
-    readingNotes: getReadingNotes(),
-    commentary: getCommentary(),
   };
 }
 

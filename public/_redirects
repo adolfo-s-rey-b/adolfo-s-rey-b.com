@@ -19,19 +19,14 @@
 /notes/macroeconomia            /notes/class/macroeconomics/          301
 /notes/microeconomia            /notes/class/microeconomics/          301
 
-# ── /blog/ absorbido por /notes/ ────────────────────────────────────────────
-# El §4.2 pedía redirigir los dos posts a /notes/commentary/<slug>/, pero esas
-# rutas no existen: los posts no se publican (contenido de demo sin verificar).
-# Un 301 hacia un 404 es peor que no tener redirect — Search Console lo marca
-# como error de redirección y el usuario aterriza en una página de error.
+# ── Blog ────────────────────────────────────────────────────────────────────
+# /blog/ vuelve a ser una ruta real: las notas de clase (/notes/) y los
+# escritos (/blog/) son cosas distintas y tienen índices separados.
+# NO reintroducir aquí una regla /blog/* → /notes/: dejaría el blog inalcanzable.
 #
-# Cuando se publique un commentary, descomentar la línea que corresponda y
-# dejarla ANTES de la regla splat /blog/*:
-# /blog/regulacion-fintech/      /notes/commentary/fintech-regulation-colombia/        301
-# /blog/machine-learning-salud/  /notes/commentary/machine-learning-public-health/     301
-/blog                           /notes/                               301
-/blog/                          /notes/                               301
-/blog/*                         /notes/                               301
+# Las dos entradas de demo se reescribieron con slugs nuevos en inglés.
+/blog/regulacion-fintech/       /blog/colombia-mandatory-open-finance/   301
+/blog/machine-learning-salud/   /blog/two-methods-disease-clusters/      301
 
 # ── Assets renombrados (§9) ─────────────────────────────────────────────────
 # El nombre viejo del PDF puede estar enlazado desde fuera.

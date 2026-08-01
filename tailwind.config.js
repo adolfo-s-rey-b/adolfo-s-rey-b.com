@@ -20,19 +20,20 @@ module.exports = {
       },
       fontFamily: {
         serif: ['var(--font-serif)', 'Charter', 'Georgia', 'serif'],
+        sans: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
       },
-      // §6.1: medida de 68–72 caracteres
+      // Medida de 68–72 caracteres
       maxWidth: {
         prose: '42rem',
         wide: '52rem',
       },
-      // §6.2: escala restringida. Nada más grande que `name`.
+      // Escala restringida. Nada más grande que `name`.
       fontSize: {
         meta: ['14px', { lineHeight: '1.5' }],
         nav: ['15px', { lineHeight: '1.4' }],
-        body: ['18px', { lineHeight: '1.6' }],
         h3: ['18px', { lineHeight: '1.4' }],
+        body: ['19px', { lineHeight: '1.65' }],
         h2: ['22px', { lineHeight: '1.3' }],
         h1: ['30px', { lineHeight: '1.2' }],
         name: ['34px', { lineHeight: '1.15' }],

@@ -38,19 +38,23 @@ export default function HomeView({ locale, routeKey, copy, jsonLd }) {
         </picture>
 
         <div className="min-w-0">
-          <h1 className="text-name font-semibold">{copy.heading}</h1>
-          <p className="mt-1 text-muted">{copy.tagline}</p>
+          {/* El nombre se queda en serif: es la firma, no un encabezado de
+              estructura. */}
+          <h1 className="font-serif text-name">{copy.heading}</h1>
+          <p className="ui mt-1 text-muted">{copy.tagline}</p>
         </div>
       </div>
 
       <div className="mt-8 space-y-5">
         {copy.body.map((paragraph) => (
-          <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+          <p key={paragraph.slice(0, 40)} className="prose-justify">
+            {paragraph}
+          </p>
         ))}
       </div>
 
-      <section className="mt-12" aria-labelledby="research-interests">
-        <h2 id="research-interests" className="text-h2 font-semibold">
+      <section className="mt-12 border-t border-rule pt-8" aria-labelledby="research-interests">
+        <h2 id="research-interests" className="text-h2">
           {copy.interestsHeading}
         </h2>
         <ul className="mt-4 space-y-2">
@@ -60,7 +64,7 @@ export default function HomeView({ locale, routeKey, copy, jsonLd }) {
         </ul>
       </section>
 
-      <p className="mt-12 border-t border-rule pt-6 text-meta">
+      <p className="ui mt-12 border-t border-rule pt-6 text-meta">
         {links.map((link, i) => (
           <span key={link.label}>
             {i > 0 && <span aria-hidden="true" className="text-muted"> · </span>}

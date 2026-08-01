@@ -30,7 +30,7 @@ export default function LessonView({
         <Link href={href('subject', locale, { subject: subject.id })}>{subject.title}</Link>
       </p>
 
-      <h1 className="mt-4 text-h1 font-semibold" lang={subject.contentLang}>
+      <h1 className="mt-4 text-h1" lang={subject.contentLang}>
         {lesson.title}
       </h1>
       {lesson.description && (

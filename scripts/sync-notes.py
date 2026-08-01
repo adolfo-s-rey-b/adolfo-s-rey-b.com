@@ -296,15 +296,13 @@ def _build_publicar_frontmatter(meta: dict, filename: str) -> str:
 def process_publicar_notes(vault_root: Path, config: dict) -> int:
     """Copia notas marcadas con #publicar del vault al sitio web.
 
-    - #publicar + #blog → content/notes/commentary/<slug>.md
-    - #publicar (sin #blog) → content/notes/reading/<slug>.md
+    Todas van a content/blog/<slug>.md, con el tipo en el frontmatter.
 
     Archivos planos, NO carpetas con index.md: escribir en content/notes/<slug>/
     crearía pseudo-materias que getSubjects() intentaría renderizar sin
     _meta.json. Todas las entradas nacen con published: false.
     """
-    commentary_root = Path(config["commentaryRoot"])
-    reading_root = Path(config["readingRoot"])
+    blog_root = Path(config["blogRoot"])
     copied = 0
 
     for src_file in sorted(vault_root.rglob("*.md")):
@@ -333,9 +331,8 @@ def process_publicar_notes(vault_root: Path, config: dict) -> int:
 
         # Determinar destino
         slug = slugify(src_file.stem)
-        dest_dir = commentary_root if is_blog else reading_root
-        dest_dir.mkdir(parents=True, exist_ok=True)
-        dest_file = dest_dir / f"{slug}.md"
+        blog_root.mkdir(parents=True, exist_ok=True)
+        dest_file = blog_root / f"{slug}.md"
 
         should_copy = True
         if dest_file.exists():
@@ -344,7 +341,7 @@ def process_publicar_notes(vault_root: Path, config: dict) -> int:
 
         if should_copy:
             dest_file.write_text(final_content, encoding="utf-8")
-            dest_type = "commentary" if is_blog else "reading"
+            dest_type = "commentary" if is_blog else "paper-note"
             print(f"  [#publicar→{dest_type}] {dest_file.relative_to(WEBSITE_ROOT)}  ←  {src_file.name}")
             copied += 1
 

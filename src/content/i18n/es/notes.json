@@ -1,15 +1,10 @@
 {
-  "title": "Notas y blog — Adolfo S. Rey B.",
-  "metaDescription": "Notas de clase de los cursos que enseño, fichas de los papers que leo y comentarios ocasionales.",
-  "heading": "Notas y blog",
-  "intro": "Notas de clase que escribo para los cursos que enseño, fichas de los papers que estoy leyendo y comentarios ocasionales.",
-  "blocks": {
-    "class": "Notas de clase",
-    "reading": "Fichas de lectura",
-    "commentary": "Comentarios"
-  },
-  "classNotesSubtitle": "Notas en español · en revisión continua",
+  "title": "Notas de clase — Adolfo S. Rey B.",
+  "metaDescription": "Notas de clase que escribo para los cursos que enseño en la Universidad de los Andes.",
+  "heading": "Notas de clase",
+  "intro": "Notas de clase que escribo para los cursos que enseño. Las reviso cada vez que vuelvo a dictar el curso.",
   "lessonsLabel": "lecciones",
   "lessonLabel": "lección",
-  "tocHeading": "En esta página"
+  "tocHeading": "En esta página",
+  "classNotesSubtitle": "Notas en español · en revisión continua"
 }

@@ -1,15 +1,10 @@
 {
-  "title": "Notes & Blog — Adolfo S. Rey B.",
-  "metaDescription": "Class notes for the courses I teach, notes on papers I am reading, and occasional commentary.",
-  "heading": "Notes & Blog",
-  "intro": "Class notes I write for the courses I teach, notes on papers I am reading, and occasional commentary.",
-  "blocks": {
-    "class": "Class notes",
-    "reading": "Reading notes",
-    "commentary": "Commentary"
-  },
-  "classNotesSubtitle": "Notes in Spanish · continuously revised",
+  "title": "Class notes — Adolfo S. Rey B.",
+  "metaDescription": "Class notes I write for the courses I teach at Universidad de los Andes.",
+  "heading": "Class notes",
+  "intro": "Class notes I write for the courses I teach. They are revised as I teach each course again.",
   "lessonsLabel": "lessons",
   "lessonLabel": "lesson",
-  "tocHeading": "On this page"
+  "tocHeading": "On this page",
+  "classNotesSubtitle": "Notes in Spanish · continuously revised"
 }

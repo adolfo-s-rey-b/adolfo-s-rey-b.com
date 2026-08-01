@@ -11,7 +11,7 @@ export default function CodeView({ locale, routeKey, copy, repos }) {
         description={copy.metaDescription}
       />
 
-      <h1 className="text-h1 font-semibold">{copy.heading}</h1>
+      <h1 className="text-h1">{copy.heading}</h1>
 
       <div className="mt-6 space-y-5">
         <p>
@@ -28,7 +28,7 @@ export default function CodeView({ locale, routeKey, copy, repos }) {
         <ul className="mt-10">
           {repos.map((repo) => (
             <li key={repo.name} className="border-t border-rule py-4 first:border-t-0">
-              <p className="text-h3 font-semibold">
+              <p className="text-h3">
                 <a href={repo.url}>{repo.name}</a>
               </p>
               <p className="mt-1 text-muted">{repo.description}</p>

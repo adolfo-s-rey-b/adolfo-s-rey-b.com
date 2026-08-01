@@ -4,10 +4,11 @@
     "skipToContent": "Skip to content",
     "research": "Research",
     "teaching": "Teaching",
-    "notes": "Notes & Blog",
+    "notes": "Notes",
     "code": "Code",
     "cv": "CV",
-    "contact": "Contact"
+    "contact": "Contact",
+    "blog": "Blog"
   },
   "marks": {
     "pdf": "[PDF]",

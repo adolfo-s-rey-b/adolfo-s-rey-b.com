@@ -41,8 +41,7 @@ src/
 data/               hechos estructurados, con los campos traducibles como {en, es}
 content/
   notes/class/      notas de clase por materia
-  notes/reading/    fichas de lectura (vacío; ver _TEMPLATE.md)
-  notes/commentary/ comentarios
+  blog/             fichas de papers, comentarios y policy briefs
   code.json         listado de /code/
 public/
   _redirects        301 de Cloudflare Pages
@@ -76,9 +75,13 @@ Carpeta bajo `content/notes/class/` con un `_meta.json`:
 
 Y añade el mapeo en `data/obsidian-sync.json`.
 
-### Una ficha de lectura o un comentario
+### Una entrada de blog
 
-Copia `content/notes/reading/_TEMPLATE.md`. **Nada se renderiza hasta que el frontmatter diga `published: true`** — así ninguna nota importada desde Obsidian se publica sin revisión.
+Copia `content/blog/_TEMPLATE.md`. El frontmatter necesita `title`, `date`, `type` (`paper-note`, `commentary` o `policy-brief`), `summary`, `lang` y `published`.
+
+**Nada se renderiza hasta que `published: true`** — así ninguna nota importada desde Obsidian se publica sin revisión. Las entradas están escritas en un solo idioma; la versión bajo el otro locale se sirve con `noindex` para no duplicar contenido.
+
+`/notes/` son apuntes de los cursos que enseña; `/blog/` son escritos. Son cosas distintas y tienen índices separados: no reintroducir una regla `/blog/* → /notes/` en `_redirects`, dejaría el blog inalcanzable.
 
 ### Un repositorio en `/code/`
 
@@ -139,7 +142,9 @@ Como 1 y 2 son los dos únicos ítems de *Legal scholarship*, la sección entera
 
 ## Diseño
 
-Cuatro colores más la regla, definidos como custom properties en `src/styles/globals.css` y expuestos a Tailwind como `bg`, `text`, `muted`, `accent`, `rule`. Modo oscuro por `prefers-color-scheme`, sin toggle.
+Cuatro colores más la regla, definidos como custom properties en `src/styles/globals.css` y expuestos a Tailwind como `bg`, `text`, `muted`, `accent`, `rule`. En claro, morado `#5E026E` sobre blanco; en oscuro, la paleta cálida. Modo oscuro por `prefers-color-scheme`, sin toggle.
+
+Dos familias: **Source Serif 4** para el texto que se lee y **Source Sans 3** para encabezados, navegación y metadatos. El contraste entre familias es lo que da la jerarquía. Ambas locales y subseteadas. La prosa va justificada con `hyphens: auto` — justificar sin partir palabras abre ríos de blanco — y cae a alineación izquierda por debajo de 640px.
 
 Sin tarjetas, sin sombras, sin gradientes, sin animaciones, sin iconografía decorativa. `boxShadow` y `borderRadius` están neutralizados en `tailwind.config.js` para que cualquier `shadow-*` o `rounded-*` residual sea un no-op.
 

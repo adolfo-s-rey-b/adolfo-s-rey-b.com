@@ -10,8 +10,7 @@ const matter = require('gray-matter');
 // getSubjects() trataría reading/ y commentary/ como materias y generaría
 // rutas rotas sin _meta.json.
 const NOTES_DIR = path.join(process.cwd(), 'content', 'notes', 'class');
-const READING_DIR = path.join(process.cwd(), 'content', 'notes', 'reading');
-const COMMENTARY_DIR = path.join(process.cwd(), 'content', 'notes', 'commentary');
+const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
 
 function listMarkdown(dir) {
   if (!fs.existsSync(dir)) return [];
@@ -111,25 +110,50 @@ async function getLessonBySlug(subject, lessonSlug) {
   };
 }
 
-// --- Reading notes y commentary ---
-// Ambas devuelven SOLO las entradas con `published: true` en el frontmatter.
-// Hoy las dos listas están vacías, así que sus bloques no se renderizan (§4.3).
+// --- Blog: fichas de papers, comentarios y policy briefs ---
+// Devuelve SOLO las entradas con `published: true` en el frontmatter, de modo
+// que nada importado desde Obsidian se publica sin revisión humana.
 
-function getPublishedMeta(dir) {
-  return listMarkdown(dir)
+function getBlogPosts() {
+  return listMarkdown(BLOG_DIR)
     .map((slug) => {
-      const raw = fs.readFileSync(path.join(dir, `${slug}.md`), 'utf8');
+      const raw = fs.readFileSync(path.join(BLOG_DIR, `${slug}.md`), 'utf8');
       const { data } = matter(raw);
-      return { slug, frontmatter: data };
+      return {
+        slug,
+        title: data.title || slug,
+        date: data.date || '',
+        type: data.type || 'commentary',
+        summary: data.summary || '',
+        lang: data.lang || 'en',
+        published: data.published === true,
+      };
     })
-    .filter((entry) => entry.frontmatter.published === true)
-    .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+    .filter((post) => post.published)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+}
+
+async function getBlogPostBySlug(slug) {
+  const raw = fs.readFileSync(path.join(BLOG_DIR, `${slug}.md`), 'utf8');
+  const { data, content } = matter(raw);
+  const contentHtml = await processMarkdown(content);
+
+  return {
+    slug,
+    title: data.title || slug,
+    date: data.date || '',
+    type: data.type || 'commentary',
+    summary: data.summary || '',
+    lang: data.lang || 'en',
+    contentHtml,
+    toc: extractTocFromHtml(contentHtml),
+  };
 }
 
 module.exports = {
   getSubjects,
   getLessonsForSubject,
   getLessonBySlug,
-  getReadingNotes: () => getPublishedMeta(READING_DIR),
-  getCommentary: () => getPublishedMeta(COMMENTARY_DIR),
+  getBlogPosts,
+  getBlogPostBySlug,
 };

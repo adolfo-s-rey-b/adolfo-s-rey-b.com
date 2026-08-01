@@ -53,7 +53,9 @@ Las 20 rutas de `src/pages/**` son shims de 4 líneas; el árbol `/es/` es espej
 | `/` | `HomeView` | `content/i18n/*/home.json` |
 | `/research/` | `ResearchView` | `data/research.json` |
 | `/teaching/` | `TeachingView` | `data/teaching.json` |
-| `/notes/` | `NotesIndexView` | `content/notes/**` |
+| `/notes/` | `NotesIndexView` | `content/notes/class/**` |
+| `/blog/` | `BlogIndexView` | `content/blog/*.md` |
+| `/blog/<slug>/` | `BlogPostView` | `content/blog/<slug>.md` |
 | `/notes/class/<materia>/` | `SubjectView` | `content/notes/class/<materia>/_meta.json` |
 | `/notes/class/<materia>/<lección>/` | `LessonView` | `content/notes/class/<materia>/<lección>.md` |
 | `/code/` | `CodeView` | `content/code.json` |
@@ -66,7 +68,7 @@ Las notas de clase están en español en ambos árboles: bajo la interfaz en ing
 
 Cada materia es una carpeta bajo `content/notes/class/` con un `_meta.json` bilingüe (`title` y `description` como `{en, es}`, más `professor`, `semester`, `contentLang`) y archivos `.md` con frontmatter `title`, `description`, `order`.
 
-`content/notes/reading/` y `content/notes/commentary/` solo renderizan entradas con `published: true` en el frontmatter; hoy ambas están vacías y sus bloques no aparecen en `/notes/`. Los archivos que empiezan por `_` se ignoran.
+`content/blog/` solo renderiza entradas con `published: true` en el frontmatter, con `type` en `paper-note`, `commentary` o `policy-brief`. Los archivos que empiezan por `_` se ignoran. **`/notes/` y `/blog/` son rutas distintas**: no reintroducir una regla `/blog/* → /notes/` en `_redirects`.
 
 ## Diseño
 
