@@ -4,79 +4,74 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal academic website for Adolfo S. Rey B. (Economist & Lawyer / Colombia Fintech). Built with **Next.js 14 (Pages Router)** and **static export** (`output: 'export'`, `trailingSlash: true`). Hosted on **Cloudflare Pages** — `https://adolfo-s-rey-b.com`.
+Sitio académico personal de Adolfo S. Rey B. (economista y abogado, Universidad de los Andes). Se dirige a un lector concreto: un profesor de economía financiera de EE. UU. o un coordinador de contratación de un banco de la Reserva Federal verificando una candidatura a un puesto predoctoral. Es la **capa de verificación del expediente**: no genera admisiones, pero puede perderlas.
 
-Full technical documentation is in `configuracion.md`.
+**Next.js 14 (Pages Router)** con export estático (`output: 'export'`, `trailingSlash: true`), en Cloudflare Pages — `https://adolfo-s-rey-b.com`. **Inglés por defecto** en la raíz; español bajo `/es/`.
+
+Ver `README.md` para estructura de contenido, cómo añadir entradas y la lista de pendientes.
 
 ## Build & Deploy
 
-El sitio se publica automáticamente: cualquier push a `main` en GitHub dispara GitHub Actions → `npm run build` → Cloudflare Pages CDN.
+Cualquier push a `main` dispara GitHub Actions → `npm run build` → Cloudflare Pages CDN.
 
 ```bash
-# Deploy automático (el cron de 5 min lo hace solo)
-# Para forzar deploy inmediato:
-bash ~/server-stack/scripts/auto-sync.sh
+npm run dev
+npm run build      # prebuild genera el sitemap, luego next build → out/
+npm run check      # invariantes de contenido; correr antes de cada commit
 
-# O manualmente:
-cd ~/server-stack/website/website-source
-git add . && git commit -m "descripción del cambio" && git push
-
-# Ver estado del último deploy:
-# https://github.com/adolfo-s-rey-b/adolfo-s-rey-b.com/actions
-
-# Preview URL: https://adolfo-s-rey-b.pages.dev
-# Producción:  https://adolfo-s-rey-b.com
+# Estado del deploy: https://github.com/adolfo-s-rey-b/adolfo-s-rey-b.com/actions
+# Preview: https://adolfo-s-rey-b.pages.dev
 ```
 
-## Architecture
+Un cron (`~/server-stack/scripts/auto-sync.sh`, cada 5 min) sincroniza el vault de Obsidian y hace commit y push a `main`. **Pausarlo antes de cualquier trabajo en rama**: hace `git add -A` sobre la rama activa y corre `sync-notes.py`, que puede regenerar carpetas de contenido.
 
-- **Framework:** Next.js 14 (Pages Router) with static export
-- **Styles:** Tailwind CSS + `@tailwindcss/typography`
-- **Icons:** `lucide-react`
-- **Markdown:** `gray-matter` + `unified` + `remark-*` + `rehype-*` pipeline (ESM-only, uses `await import()`)
-- **LaTeX:** `remark-math` + `rehype-katex`
-- **Data:** Structured content in `data/*.json` files (editable without touching code)
-- **Content:** Blog posts in `content/blog/*.md`, notes in `content/notes/<subject>/<lesson>.md`
+## Reglas duras
 
-## Data System (JSON files in `data/`)
+No son preferencias. Romper cualquiera rompe el build o publica algo falso.
 
-| File | Used by | Content |
-|------|---------|---------|
-| `profile.json` | `index.jsx` | Name, bio, quote, links, photo |
-| `papers.json` | `research.jsx` | Research papers array |
-| `teaching.json` | `teaching.jsx` | Teaching history + notes index |
-| `cv.json` | `cv.jsx` | Experience, education, skills, languages, seminars |
-| `contact.json` | `contact.jsx` | Emails, social links, webhook URL |
-| `github-fallback.json` | `github.jsx` | Fallback repos if GitHub API fails |
+1. **Ninguna vista de `src/views/` puede importar `fs`, `path` ni `lib/markdown`.** El transform SSG de Next solo elimina imports huérfanos bajo `pages/`; desde una vista, `fs` acaba en el bundle de cliente y el build falla con `Can't resolve 'fs'`. Los accesos a disco viven en `src/lib/props/`. `npm run check` lo verifica.
+2. **`next/font` no puede importarse en `src/pages/_document.jsx`.** Next lanza `Cannot be used within pages/_document.js`. La fuente se carga en `_app.jsx`.
+3. **Todo `href` sale de `href()` de `src/lib/routes.js`**, nunca escrito a mano. Las rutas llevan barra final; una sin ella provoca un 308 extra en Cloudflare, invisible en dev y penalizado en Lighthouse.
+4. **No inventar ningún dato.** Ni una fecha, ni una cifra, ni un título, ni un coautor. Lo que falte queda como bloque comentado que no se renderiza. Los pendientes están en el README.
 
-## Notes System (Multi-file)
+## Arquitectura i18n
 
-Each subject is a folder: `content/notes/<subject>/` with:
-- `_meta.json` — subject metadata (title, professor, semester, description)
-- `*.md` files — lessons with frontmatter: `title`, `description`, `order`
+Tres capas, sin duplicar lógica:
 
-Routes:
-- `/notes/<subject>` — lesson index page
-- `/notes/<subject>/<lesson>` — individual lesson with sidebar TOC + prev/next navigation
-
-## Page Routes
-
-| Route | Source | Data |
+| Capa | Dónde | Qué |
 |---|---|---|
-| `/` | `pages/index.jsx` | `data/profile.json` |
-| `/research` | `pages/research.jsx` | `data/papers.json` |
-| `/teaching` | `pages/teaching.jsx` | `data/teaching.json` |
-| `/cv` | `pages/cv.jsx` | `data/cv.json` |
-| `/github` | `pages/github.jsx` | GitHub API + fallback |
-| `/contact` | `pages/contact.jsx` | `data/contact.json` |
-| `/blog` | `pages/blog/index.jsx` | `content/blog/*.md` |
-| `/blog/<slug>` | `pages/blog/[slug].jsx` | `content/blog/<slug>.md` |
-| `/notes/<subject>` | `pages/notes/[subject]/index.jsx` | `content/notes/<subject>/_meta.json` |
-| `/notes/<subject>/<lesson>` | `pages/notes/[subject]/[lesson].jsx` | `content/notes/<subject>/<lesson>.md` |
+| Hechos | `data/*.json` | campos traducibles como `{en, es}`; URLs y fechas como string plano |
+| Copy de UI | `src/content/i18n/<locale>/*.json` | un archivo por página |
+| Vista | `src/views/*.jsx` | JSX sin ninguna lógica de idioma |
 
-## Brand
+Las 20 rutas de `src/pages/**` son shims de 4 líneas; el árbol `/es/` es espejo del de la raíz. `tDeep()` (`src/lib/i18n.js`) resuelve los nodos `{en, es}`. `alternates()` (`src/lib/routes.js`) es el **único** sitio donde se calcula el par EN/ES, y lo consumen el selector de idioma, los `hreflang` y el sitemap. El `lang` de `<html>` se deriva en `_document.jsx` de `ctx.pathname`.
 
-- Primary color: `#5e026e` (purple)
-- Hover variant: `#7b0391`
-- Font: serif for headings (Georgia), sans for body (Inter)
-- Selection highlight: `bg-[#5e026e] text-white`
+## Rutas
+
+| Ruta (y su espejo bajo `/es/`) | Vista | Datos |
+|---|---|---|
+| `/` | `HomeView` | `content/i18n/*/home.json` |
+| `/research/` | `ResearchView` | `data/research.json` |
+| `/teaching/` | `TeachingView` | `data/teaching.json` |
+| `/notes/` | `NotesIndexView` | `content/notes/**` |
+| `/notes/class/<materia>/` | `SubjectView` | `content/notes/class/<materia>/_meta.json` |
+| `/notes/class/<materia>/<lección>/` | `LessonView` | `content/notes/class/<materia>/<lección>.md` |
+| `/code/` | `CodeView` | `content/code.json` |
+| `/cv/` | `CvView` | `data/cv.json` |
+| `/contact/` | `ContactView` | `src/lib/site.js` |
+
+Las notas de clase están en español en ambos árboles: bajo la interfaz en inglés se sirven con `noindex` y marca `ES`, y quedan fuera del sitemap. Solo se traducen sus títulos y bajadas.
+
+## Sistema de notas
+
+Cada materia es una carpeta bajo `content/notes/class/` con un `_meta.json` bilingüe (`title` y `description` como `{en, es}`, más `professor`, `semester`, `contentLang`) y archivos `.md` con frontmatter `title`, `description`, `order`.
+
+`content/notes/reading/` y `content/notes/commentary/` solo renderizan entradas con `published: true` en el frontmatter; hoy ambas están vacías y sus bloques no aparecen en `/notes/`. Los archivos que empiezan por `_` se ignoran.
+
+## Diseño
+
+Cuatro colores más la regla, como custom properties en `src/styles/globals.css`, expuestos a Tailwind como `bg`, `text`, `muted`, `accent`, `rule`. Modo oscuro por `prefers-color-scheme`, sin toggle. Tipografía: Source Serif 4 variable, servida localmente y subseteada; mono del sistema solo para código y las marcas `[PDF]`.
+
+Sin tarjetas, sin sombras, sin gradientes, sin animaciones, sin iconografía decorativa (solo marcas textuales `[PDF]`, `[Code]`, `[Slides]`). `boxShadow` y `borderRadius` están neutralizados en `tailwind.config.js` como red de seguridad.
+
+**El sitio se parece a un documento, no a un producto.** Si una decisión de diseño lo acerca a un producto, esa decisión está mal.

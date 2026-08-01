@@ -25,3 +25,6 @@ configuracion.md
 # Sistema operativo
 .DS_Store
 Thumbs.db
+
+# El sitemap se genera en cada build (prebuild); no debe versionarse.
+public/sitemap.xml

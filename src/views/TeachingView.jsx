@@ -3,6 +3,10 @@ import SeoHead from '../components/SeoHead';
 import DateRail from '../components/DateRail';
 import { href } from '../lib/routes';
 
+// El cargo en Uniandes. La traducción autorizada es "Teaching Fellow"; el
+// término en español se conserva en cursiva junto a ella (§3.3).
+const TITLE_ES = 'profesor complementario';
+
 export default function TeachingView({ locale, routeKey, copy, appointments, history }) {
   return (
     <>
@@ -16,8 +20,18 @@ export default function TeachingView({ locale, routeKey, copy, appointments, his
       <h1 className="text-h1 font-semibold">{copy.heading}</h1>
 
       {/* Glosa autorizada del §3.3. No usar Instructor, Lecturer ni Adjunct
-          Professor: Adolfo no es instructor of record. */}
-      <p className="mt-6 max-w-prose">{copy.intro}</p>
+          Professor: Adolfo no es instructor of record.
+          El cargo en español va en cursiva y marcado con lang="es". */}
+      <p className="mt-6 max-w-prose">
+        {copy.intro.split(TITLE_ES).flatMap((part, i) => [
+          i > 0 && (
+            <em key={`t${i}`} lang="es">
+              {TITLE_ES}
+            </em>
+          ),
+          part,
+        ])}
+      </p>
 
       <div className="mt-10">
         {appointments.map((appointment) => (

@@ -1,65 +1,75 @@
 #!/usr/bin/env node
 /**
- * generate-sitemap.js — Genera sitemap.xml en build time
- * Se ejecuta como script postbuild. Lee los directorios de content/
- * para incluir rutas dinámicas (blog, notes).
+ * generate-sitemap.js — genera public/sitemap.xml antes del build.
+ *
+ * Corre como `prebuild`, NO como postbuild: con output:'export', next build
+ * copia public/ a out/ durante el build, así que un sitemap escrito después
+ * nunca llega al sitio publicado. (Ese era el bug: lo que se estaba
+ * publicando era el public/sitemap.xml commiteado, con lastmod de abril.)
+ *
+ * Las rutas salen de src/lib/routes.js, la misma fuente que usan las páginas,
+ * así que el sitemap no puede desincronizarse del árbol de rutas real.
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const BASE_URL = 'https://adolfo-s-rey-b.com';
-const PUBLIC_DIR = path.join(__dirname, '..', 'public');
-const CONTENT_DIR = path.join(__dirname, '..', 'content');
+const { SITE_URL, LOCALES, NAV, href, alternates } = require('../src/lib/routes');
+const { getSubjects, getLessonsForSubject } = require('../src/lib/markdown');
 
-function getNoteSlugs() {
-  const notesDir = path.join(CONTENT_DIR, 'notes');
-  if (!fs.existsSync(notesDir)) return [];
-  const subjects = fs.readdirSync(notesDir).filter((f) =>
-    fs.statSync(path.join(notesDir, f)).isDirectory()
-  );
-  const routes = [];
-  for (const subject of subjects) {
-    routes.push(`/notes/${subject}`);
-    const subjectDir = path.join(notesDir, subject);
-    const files = fs.readdirSync(subjectDir).filter((f) => f.endsWith('.md'));
-    for (const file of files) {
-      const slug = file.replace(/\.md$/, '');
-      routes.push(`/notes/${subject}/${slug}`);
-    }
+const entries = [];
+
+// Páginas de chrome: indexables en ambos locales, con hreflang recíproco.
+entries.push({ key: 'home', params: {}, bilingual: true });
+for (const key of NAV) entries.push({ key, params: {}, bilingual: true });
+
+// Notas de clase: el contenido está en español, así que solo se indexa el árbol
+// /es/. La versión en inglés se sirve con noindex (ver lib/props/notes.js), y
+// una URL con noindex no debe aparecer en el sitemap.
+for (const subject of getSubjects()) {
+  entries.push({ key: 'subject', params: { subject: subject.id }, bilingual: false });
+
+  for (const lesson of getLessonsForSubject(subject.id)) {
+    // Las lecciones sin cuerpo son thin content: noindex en ambos locales.
+    if (lesson.empty) continue;
+    entries.push({
+      key: 'lesson',
+      params: { subject: subject.id, lesson: lesson.slug },
+      bilingual: false,
+    });
   }
-  return routes;
 }
 
-function getBlogSlugs() {
-  const blogDir = path.join(CONTENT_DIR, 'blog');
-  if (!fs.existsSync(blogDir)) return [];
-  return fs
-    .readdirSync(blogDir)
-    .filter((f) => f.endsWith('.md'))
-    .map((f) => `/blog/${f.replace(/\.md$/, '')}`);
+const today = new Date().toISOString().slice(0, 10);
+
+const urls = [];
+for (const entry of entries) {
+  const locales = entry.bilingual ? LOCALES : ['es'];
+  const alts = alternates(entry.key, entry.params);
+
+  for (const locale of locales) {
+    const loc = SITE_URL + href(entry.key, locale, entry.params);
+    const links = entry.bilingual
+      ? alts
+          .map(
+            (alt) =>
+              `    <xhtml:link rel="alternate" hreflang="${alt.locale}" href="${alt.url}"/>\n`
+          )
+          .join('') +
+        `    <xhtml:link rel="alternate" hreflang="x-default" href="${
+          alts.find((a) => a.locale === 'en').url
+        }"/>\n`
+      : '';
+
+    urls.push(`  <url>\n    <loc>${loc}</loc>\n${links}    <lastmod>${today}</lastmod>\n  </url>`);
+  }
 }
-
-const staticRoutes = ['/', '/research', '/teaching', '/cv', '/github', '/blog', '/contact'];
-const noteRoutes = getNoteSlugs();
-const blogRoutes = getBlogSlugs();
-
-const allRoutes = [...staticRoutes, ...noteRoutes, ...blogRoutes];
-const today = new Date().toISOString().split('T')[0];
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${allRoutes
-  .map(
-    (route) => `  <url>
-    <loc>${BASE_URL}${route}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>${route === '/' ? 'weekly' : 'monthly'}</changefreq>
-  </url>`
-  )
-  .join('\n')}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${urls.join('\n')}
 </urlset>
 `;
 
-fs.writeFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), sitemap, 'utf8');
-console.log(`Sitemap generado: ${allRoutes.length} URLs → public/sitemap.xml`);
+fs.writeFileSync(path.join(__dirname, '..', 'public', 'sitemap.xml'), sitemap, 'utf8');
+console.log(`sitemap: ${urls.length} URLs → public/sitemap.xml`);

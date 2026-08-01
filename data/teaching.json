@@ -1,4 +1,17 @@
 {
+  "_comment_syllabi": [
+    "Los enlaces a syllabi son el activo verificable de esta página (§7.3): un PI",
+    "puede abrirlos y confirmar el curso, el semestre y el profesor titular.",
+    "",
+    "Uniandes migró su sitio y la ruta pasó de /sites/default/files/... a",
+    "/sites/economia/files/media/... — los 10 enlaces antiguos daban 404. Se",
+    "reconstruyeron y se verificó uno por uno que devuelven application/pdf.",
+    "",
+    "Los programas del semestre en curso se publican en:",
+    "https://economia.uniandes.edu.co/es/estudiantes/pregrado-en-economia/programas-academicos-de-los-cursos-de-pregrado",
+    "Revisar ese listado al añadir un semestre nuevo, y volver a correr la",
+    "verificación de enlaces antes de publicar."
+  ],
   "appointments": [
     {
       "id": "teaching-fellow",
@@ -6,17 +19,26 @@
         "en": "Teaching Fellow — profesor complementario",
         "es": "Profesor complementario"
       },
-      "years": { "en": "2024–present", "es": "2024–presente" },
+      "years": {
+        "en": "2024–present",
+        "es": "2024–presente"
+      },
       "groups": [
         {
-          "label": { "en": "Advanced theory", "es": "Teoría avanzada" },
+          "label": {
+            "en": "Advanced theory",
+            "es": "Teoría avanzada"
+          },
           "courses": {
             "en": "Game Theory (Oskar Nupia); Microeconomics III (Oskar Nupia; Andrés Dávila-Ospina); Industrial Organization (Hernán Vallejo)",
             "es": "Teoría de Juegos (Oskar Nupia); Microeconomía 3 (Oskar Nupia; Andrés Dávila-Ospina); Organización Industrial (Hernán Vallejo)"
           }
         },
         {
-          "label": { "en": "Core sequence", "es": "Ciclo básico" },
+          "label": {
+            "en": "Core sequence",
+            "es": "Ciclo básico"
+          },
           "courses": {
             "en": "Introduction to Macroeconomics and Macroeconomics (Hernán Vallejo); Consumer and Firm Theory (Hernán Vallejo); Introduction to the Colombian Economy (Alberto Carrasquilla)",
             "es": "Introducción a la Macroeconomía y Macroeconomía (Hernán Vallejo); Teoría del Consumidor y la Firma (Hernán Vallejo); Introducción a la Economía Colombiana (Alberto Carrasquilla)"
@@ -30,7 +52,10 @@
         "en": "Undergraduate Teaching Assistant",
         "es": "Monitor de pregrado"
       },
-      "years": { "en": "2019–2023", "es": "2019–2023" },
+      "years": {
+        "en": "2019–2023",
+        "es": "2019–2023"
+      },
       "groups": [
         {
           "label": null,
@@ -42,11 +67,13 @@
       ]
     }
   ],
-
   "history": [
     {
       "period": "2026-1",
-      "semester": { "en": "Spring 2026", "es": "Primer semestre de 2026" },
+      "semester": {
+        "en": "Spring 2026",
+        "es": "Primer semestre de 2026"
+      },
       "courses": [
         {
           "name": {
@@ -57,7 +84,10 @@
           "programUrl": null
         },
         {
-          "name": { "en": "Macroeconomics", "es": "Macroeconomía" },
+          "name": {
+            "en": "Macroeconomics",
+            "es": "Macroeconomía"
+          },
           "professor": "Hernán Vallejo",
           "programUrl": null
         }
@@ -65,28 +95,43 @@
     },
     {
       "period": "2025-2",
-      "semester": { "en": "Fall 2025", "es": "Segundo semestre de 2025" },
+      "semester": {
+        "en": "Fall 2025",
+        "es": "Segundo semestre de 2025"
+      },
       "courses": [
         {
-          "name": { "en": "Microeconomics III", "es": "Microeconomía 3" },
+          "name": {
+            "en": "Microeconomics III",
+            "es": "Microeconomía 3"
+          },
           "professor": "Oskar Nupia",
-          "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202520/Econ-3113-3123-Microeconomia-3-2025-20-Oskar-Nupia.pdf"
+          "programUrl": "https://economia.uniandes.edu.co/sites/economia/files/media/pregrado/pracademicos/202520/Econ-3113-3123-Microeconomia-3-2025-20-Oskar-Nupia.pdf"
         },
         {
-          "name": { "en": "Industrial Organization", "es": "Organización Industrial" },
+          "name": {
+            "en": "Industrial Organization",
+            "es": "Organización Industrial"
+          },
           "professor": "Hernán Vallejo",
-          "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202520/Econ-3672-Organización-Industrial-2025-20-Hernan-Vallejo.pdf"
+          "programUrl": "https://economia.uniandes.edu.co/sites/economia/files/media/pregrado/pracademicos/202520/Econ-3672-Organización-Industrial-2025-20-Hernan-Vallejo.pdf"
         }
       ]
     },
     {
       "period": "2025-1",
-      "semester": { "en": "Spring 2025", "es": "Primer semestre de 2025" },
+      "semester": {
+        "en": "Spring 2025",
+        "es": "Primer semestre de 2025"
+      },
       "courses": [
         {
-          "name": { "en": "Game Theory", "es": "Teoría de Juegos" },
+          "name": {
+            "en": "Game Theory",
+            "es": "Teoría de Juegos"
+          },
           "professor": "Oskar Nupia",
-          "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202510/Econ-2105-Teoria-de-Juegos-2025-10-Oskar-Nupia.pdf"
+          "programUrl": "https://economia.uniandes.edu.co/sites/economia/files/media/pregrado/pracademicos/202510/Econ-2105-Teoria-de-Juegos-2025-10-Oskar-Nupia.pdf"
         },
         {
           "name": {
@@ -94,50 +139,74 @@
             "es": "Introducción a la Macroeconomía"
           },
           "professor": "Hernán Vallejo",
-          "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202510/Econ-2108-Fundamentos-De-Economia-2025-10-Hernan-Vallejo.pdf"
+          "programUrl": "https://economia.uniandes.edu.co/sites/economia/files/media/pregrado/pracademicos/202510/Econ-2108-Fundamentos-De-Economia-2025-10-Hernan-Vallejo.pdf"
         }
       ]
     },
     {
       "period": "2024-2",
-      "semester": { "en": "Fall 2024", "es": "Segundo semestre de 2024" },
+      "semester": {
+        "en": "Fall 2024",
+        "es": "Segundo semestre de 2024"
+      },
       "courses": [
         {
-          "name": { "en": "Game Theory", "es": "Teoría de Juegos" },
+          "name": {
+            "en": "Game Theory",
+            "es": "Teoría de Juegos"
+          },
           "professor": "Oskar Nupia",
-          "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202420/Econ-2105-Teoria-De-Juegos-2024-20-Oskar-Nupia.pdf"
+          "programUrl": "https://economia.uniandes.edu.co/sites/economia/files/media/pregrado/pracademicos/202420/Econ-2105-Teoria-De-Juegos-2024-20-Oskar-Nupia.pdf"
         },
         {
-          "name": { "en": "Industrial Organization", "es": "Organización Industrial" },
+          "name": {
+            "en": "Industrial Organization",
+            "es": "Organización Industrial"
+          },
           "professor": "Hernán Vallejo",
-          "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202420/Econ-3672-Organización-Industrial-2024-20-Hernan-Vallejo.pdf"
+          "programUrl": "https://economia.uniandes.edu.co/sites/economia/files/media/pregrado/pracademicos/202420/Econ-3672-Organización-Industrial-2024-20-Hernan-Vallejo.pdf"
         }
       ]
     },
     {
       "period": "2024-inter",
-      "semester": { "en": "Intersemester 2024", "es": "Periodo intersemestral de 2024" },
+      "semester": {
+        "en": "Intersemester 2024",
+        "es": "Periodo intersemestral de 2024"
+      },
       "courses": [
         {
-          "name": { "en": "Game Theory", "es": "Teoría de Juegos" },
+          "name": {
+            "en": "Game Theory",
+            "es": "Teoría de Juegos"
+          },
           "professor": "Juan José Ferro Hoyos",
-          "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202419/Econ-2105-Teoria-De-Juegos-2024-19-Juan-Jose-Ferro.pdf"
+          "programUrl": "https://economia.uniandes.edu.co/sites/economia/files/media/pregrado/pracademicos/202419/Econ-2105-Teoria-De-Juegos-2024-19-Juan-Jose-Ferro.pdf"
         },
         {
-          "name": { "en": "Microeconomics III", "es": "Microeconomía 3" },
+          "name": {
+            "en": "Microeconomics III",
+            "es": "Microeconomía 3"
+          },
           "professor": "Andrés Dávila-Ospina",
-          "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202419/Econ-3123-Microeconomia-3-2024-19-Andres-Davila.pdf"
+          "programUrl": "https://economia.uniandes.edu.co/sites/economia/files/media/pregrado/pracademicos/202419/Econ-3123-Microeconomia-3-2024-19-Andres-Davila.pdf"
         }
       ]
     },
     {
       "period": "2024-1",
-      "semester": { "en": "Spring 2024", "es": "Primer semestre de 2024" },
+      "semester": {
+        "en": "Spring 2024",
+        "es": "Primer semestre de 2024"
+      },
       "courses": [
         {
-          "name": { "en": "Game Theory", "es": "Teoría de Juegos" },
+          "name": {
+            "en": "Game Theory",
+            "es": "Teoría de Juegos"
+          },
           "professor": "Oskar Nupia",
-          "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202410/Econ-2105-Teoria-de-Juegos-2024-10-Oskar-Nupia.pdf"
+          "programUrl": "https://economia.uniandes.edu.co/sites/economia/files/media/pregrado/pracademicos/202410/Econ-2105-Teoria-de-Juegos-2024-10-Oskar-Nupia.pdf"
         },
         {
           "name": {
@@ -145,7 +214,7 @@
             "es": "Teoría del Consumidor y la Firma"
           },
           "professor": "Hernán Vallejo",
-          "programUrl": "https://economia.uniandes.edu.co/sites/default/files/pregrado/pracademicos/202410/Econ-2106-Teoria-Del-Consumidor-y-Firma-2024-10-Hernan-Vallejo.pdf"
+          "programUrl": "https://economia.uniandes.edu.co/sites/economia/files/media/pregrado/pracademicos/202410/Econ-2106-Teoria-Del-Consumidor-y-Firma-2024-10-Hernan-Vallejo.pdf"
         }
       ]
     }

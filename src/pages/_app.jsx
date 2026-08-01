@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }) {
     Component.getLayout ?? ((page, props) => <Layout {...props}>{page}</Layout>);
 
   return (
-    <div className={serif.variable}>
+    <div className={`${serif.variable} site-root`}>
       {getLayout(<Component {...pageProps} />, pageProps)}
     </div>
   );

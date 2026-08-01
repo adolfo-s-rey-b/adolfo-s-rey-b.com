@@ -40,6 +40,13 @@ html {
 body {
   background-color: var(--bg);
   color: var(--text);
+}
+
+/* La tipografía va aquí y no en body: next/font define --font-serif en el div
+   que _app.jsx envuelve, y las custom properties heredan hacia abajo, no hacia
+   arriba. Puesta en body, `font-family: var(--font-serif), …` queda inválida en
+   tiempo de cómputo y NO cae al resto de la lista: cae al sans de preflight. */
+.site-root {
   font-family: var(--font-serif), Charter, 'Bitstream Charter', Georgia, serif;
   font-size: 18px;
   line-height: 1.6;
