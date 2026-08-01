@@ -3,21 +3,64 @@ module.exports = {
   content: [
     './src/pages/**/*.{js,jsx}',
     './src/components/**/*.{js,jsx}',
+    './src/views/**/*.{js,jsx}',
   ],
   theme: {
     extend: {
-      animation: {
-        'fade-in': 'fadeIn 0.4s ease-in-out',
+      // Los colores apuntan a las custom properties de globals.css, así que el
+      // modo oscuro funciona sin variantes `dark:` en el marcado.
+      // Nota: esto desactiva los modificadores de opacidad (`text-accent/50`),
+      // lo cual es deseado — el acento nunca se usa con alpha ni como fondo.
+      colors: {
+        bg: 'var(--bg)',
+        text: 'var(--text)',
+        muted: 'var(--muted)',
+        accent: 'var(--accent)',
+        rule: 'var(--rule)',
       },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0', transform: 'translateY(8px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
+      fontFamily: {
+        serif: ['var(--font-serif)', 'Charter', 'Georgia', 'serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
+      },
+      // §6.1: medida de 68–72 caracteres
+      maxWidth: {
+        prose: '42rem',
+        wide: '52rem',
+      },
+      // §6.2: escala restringida. Nada más grande que `name`.
+      fontSize: {
+        meta: ['14px', { lineHeight: '1.5' }],
+        nav: ['15px', { lineHeight: '1.4' }],
+        body: ['18px', { lineHeight: '1.6' }],
+        h3: ['18px', { lineHeight: '1.4' }],
+        h2: ['22px', { lineHeight: '1.3' }],
+        h1: ['30px', { lineHeight: '1.2' }],
+        name: ['34px', { lineHeight: '1.15' }],
       },
     },
+    // Sobrescriben (no extienden) para que cualquier `shadow-*` o `rounded-*`
+    // residual sea un no-op. Red de seguridad barata contra el §6.1.
+    boxShadow: {
+      none: 'none',
+      DEFAULT: 'none',
+      sm: 'none',
+      md: 'none',
+      lg: 'none',
+      xl: 'none',
+      '2xl': 'none',
+      inner: 'none',
+    },
+    borderRadius: {
+      none: '0',
+      sm: '1px',
+      DEFAULT: '2px',
+      md: '2px',
+      lg: '2px',
+      xl: '2px',
+      '2xl': '2px',
+      '3xl': '2px',
+      full: '2px',
+    },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/typography')],
 };
