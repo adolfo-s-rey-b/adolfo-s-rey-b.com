@@ -1,29 +1,34 @@
-import Navbar from './Navbar';
+import Header from './Header';
+import Footer from './Footer';
 
-// Standard layout: used by all pages except /blog/[slug] and /notes/[slug]
-export function Layout({ children }) {
+// §6.1: una sola columna. 42rem para prosa, 52rem para /cv/, /research/ y
+// /notes/. Sin tarjetas, sin sombras, sin fondos alternos.
+// LayoutFullScreen se eliminó: el diseño nuevo es una columna en todas partes.
+const WIDTHS = { prose: 'max-w-prose', wide: 'max-w-wide' };
+
+export default function Layout({
+  children,
+  locale = 'en',
+  routeKey = 'home',
+  params = {},
+  copy,
+  width = 'prose',
+}) {
+  const nav = copy?.nav ?? {};
+
   return (
-    <div className="min-h-screen flex flex-col bg-white text-gray-700 font-sans selection:bg-[#5e026e] selection:text-white">
-      <Navbar />
-      <main className="flex-1 flex flex-col max-w-6xl mx-auto px-6 py-12 md:py-16 w-full">
+    <div className="flex min-h-screen flex-col">
+      <a href="#content" className="skip-link">
+        {nav.skipToContent ?? 'Skip to content'}
+      </a>
+
+      <Header locale={locale} routeKey={routeKey} params={params} nav={nav} />
+
+      <main id="content" className={`mx-auto w-full flex-1 px-6 py-12 ${WIDTHS[width]}`}>
         {children}
       </main>
-      <footer className="border-t border-gray-200 py-8 text-center text-sm text-gray-500 mt-auto">
-        <p>© {new Date().getFullYear()} Adolfo S. Rey B. | Economista y Abogado</p>
-      </footer>
-    </div>
-  );
-}
 
-// Full-screen layout: no footer, no max-width constraint
-// Used by /blog/[slug] and /notes/[slug]
-export function LayoutFullScreen({ children }) {
-  return (
-    <div className="min-h-screen flex flex-col bg-white text-gray-700 font-sans selection:bg-[#5e026e] selection:text-white">
-      <Navbar />
-      <main className="flex-1 flex flex-col w-full">
-        {children}
-      </main>
+      <Footer locale={locale} />
     </div>
   );
 }
