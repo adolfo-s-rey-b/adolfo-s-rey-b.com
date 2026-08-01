@@ -1,6 +1,10 @@
 {
-  "title": "Macroeconomía",
+  "title": { "en": "Macroeconomics", "es": "Macroeconomía" },
+  "description": {
+    "en": "Core concepts, growth models, monetary policy.",
+    "es": "Conceptos fundamentales, modelos de crecimiento y política monetaria."
+  },
   "professor": "Hernán Vallejo",
   "semester": "2026-1",
-  "description": "Conceptos fundamentales, modelos de crecimiento y política monetaria."
+  "contentLang": "es"
 }

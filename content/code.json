@@ -1,0 +1,14 @@
+{
+  "_comment": [
+    "Listado de /code/. Añadir un repositorio es añadir un objeto a `repos`.",
+    "Deliberadamente NO se consulta la API de GitHub: añade una dependencia de",
+    "red innecesaria a un sitio estático (§7.5).",
+    "",
+    "Forma de cada ítem:",
+    "  { \"name\": \"repo-name\",",
+    "    \"description\": { \"en\": \"One line.\", \"es\": \"Una línea.\" },",
+    "    \"language\": \"R\",",
+    "    \"url\": \"https://github.com/adolfo-s-rey-b/repo-name\" }"
+  ],
+  "repos": []
+}

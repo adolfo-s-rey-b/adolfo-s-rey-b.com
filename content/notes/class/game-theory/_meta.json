@@ -1,6 +1,10 @@
 {
-  "title": "Teoría de Juegos",
+  "title": { "en": "Game Theory", "es": "Teoría de Juegos" },
+  "description": {
+    "en": "Static and dynamic games, asymmetric information, mechanism design.",
+    "es": "Juegos estáticos, dinámicos, información asimétrica y diseño de mecanismos."
+  },
   "professor": "Oskar Nupia",
   "semester": "2025-1",
-  "description": "Juegos estáticos, dinámicos, información asimétrica y diseño de mecanismos."
+  "contentLang": "es"
 }

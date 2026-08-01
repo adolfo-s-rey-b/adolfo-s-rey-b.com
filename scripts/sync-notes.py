@@ -161,14 +161,21 @@ def get_existing_orders(subject_dir: Path) -> list:
 
 
 def ensure_meta_json(subject_dir: Path, subject_id: str):
-    """Crea _meta.json básico si no existe."""
+    """Crea _meta.json básico si no existe.
+
+    Shape bilingüe: el sitio resuelve title/description por locale. Nunca
+    sobreescribe un _meta.json existente, así que los que están traducidos a
+    mano se conservan.
+    """
     meta_file = subject_dir / "_meta.json"
     if not meta_file.exists():
+        pretty = subject_id.replace("-", " ").title()
         meta = {
-            "title": subject_id.replace("-", " ").title(),
+            "title": {"en": pretty, "es": ""},
+            "description": {"en": "", "es": ""},
             "professor": "",
             "semester": "",
-            "description": f"Notas de {subject_id.replace('-', ' ').title()}",
+            "contentLang": "es",
         }
         meta_file.write_text(json.dumps(meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"  [nuevo] _meta.json creado en {subject_dir.name}/")
@@ -272,22 +279,32 @@ def _build_publicar_frontmatter(meta: dict, filename: str) -> str:
     date_str = meta.get("date") or date.today().isoformat()
     lines = ["---", f'title: "{title}"', f'date: "{date_str}"']
     for k, v in meta.items():
-        if k in ("title", "date"):
+        if k in ("title", "date", "published"):
             continue
         if isinstance(v, str):
             lines.append(f'{k}: "{v}"')
         else:
             lines.append(f"{k}: {v}")
+    # Nada se publica sin revisión humana: el sitio solo renderiza las entradas
+    # de reading/ y commentary/ con published: true.
+    published = meta.get("published", False)
+    lines.append(f"published: {'true' if published is True else 'false'}")
     lines.append("---")
     return "\n".join(lines) + "\n"
 
 
-def process_publicar_notes(vault_root: Path, website_root: Path) -> int:
+def process_publicar_notes(vault_root: Path, config: dict) -> int:
     """Copia notas marcadas con #publicar del vault al sitio web.
 
-    - #publicar + #blog → content/blog/<slug>.md
-    - #publicar (sin #blog) → content/notes/<slug>/index.md
+    - #publicar + #blog → content/notes/commentary/<slug>.md
+    - #publicar (sin #blog) → content/notes/reading/<slug>.md
+
+    Archivos planos, NO carpetas con index.md: escribir en content/notes/<slug>/
+    crearía pseudo-materias que getSubjects() intentaría renderizar sin
+    _meta.json. Todas las entradas nacen con published: false.
     """
+    commentary_root = Path(config["commentaryRoot"])
+    reading_root = Path(config["readingRoot"])
     copied = 0
 
     for src_file in sorted(vault_root.rglob("*.md")):
@@ -316,14 +333,9 @@ def process_publicar_notes(vault_root: Path, website_root: Path) -> int:
 
         # Determinar destino
         slug = slugify(src_file.stem)
-        if is_blog:
-            dest_dir = website_root / "content" / "blog"
-            dest_dir.mkdir(parents=True, exist_ok=True)
-            dest_file = dest_dir / f"{slug}.md"
-        else:
-            dest_dir = website_root / "content" / "notes" / slug
-            dest_dir.mkdir(parents=True, exist_ok=True)
-            dest_file = dest_dir / "index.md"
+        dest_dir = commentary_root if is_blog else reading_root
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        dest_file = dest_dir / f"{slug}.md"
 
         should_copy = True
         if dest_file.exists():
@@ -332,8 +344,8 @@ def process_publicar_notes(vault_root: Path, website_root: Path) -> int:
 
         if should_copy:
             dest_file.write_text(final_content, encoding="utf-8")
-            dest_type = "blog" if is_blog else "notes"
-            print(f"  [#publicar→{dest_type}] {dest_file.relative_to(website_root)}  ←  {src_file.name}")
+            dest_type = "commentary" if is_blog else "reading"
+            print(f"  [#publicar→{dest_type}] {dest_file.relative_to(WEBSITE_ROOT)}  ←  {src_file.name}")
             copied += 1
 
     return copied
@@ -373,7 +385,7 @@ def main():
 
     # ── Digital Garden: notas con #publicar ───────────────────────────────────
     print("Procesando Digital Garden (#publicar)...")
-    publicar_changed = process_publicar_notes(vault_root, WEBSITE_ROOT)
+    publicar_changed = process_publicar_notes(vault_root, config)
     total_changed += publicar_changed
     if publicar_changed == 0:
         print("  Sin notas con #publicar nuevas o modificadas.")

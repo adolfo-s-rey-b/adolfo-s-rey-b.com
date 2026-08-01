@@ -1,32 +1,25 @@
-// All remark/rehype/unified packages are ESM-only.
-// We use dynamic import() inside async functions so webpack does not try to
-// statically resolve them as CJS require() calls.
-// gray-matter, fs, and path are CJS-compatible and safe to require() at top level.
+// Los paquetes remark/rehype/unified son ESM-only. Se usan con import()
+// dinámico dentro de funciones async para que webpack no intente resolverlos
+// como require() de CJS. fs, path y gray-matter sí son CJS.
 
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
 
-const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
-const NOTES_DIR = path.join(process.cwd(), 'content', 'notes');
+// OJO: apunta a content/notes/class, NO a content/notes. Si apuntara al padre,
+// getSubjects() trataría reading/ y commentary/ como materias y generaría
+// rutas rotas sin _meta.json.
+const NOTES_DIR = path.join(process.cwd(), 'content', 'notes', 'class');
+const READING_DIR = path.join(process.cwd(), 'content', 'notes', 'reading');
+const COMMENTARY_DIR = path.join(process.cwd(), 'content', 'notes', 'commentary');
 
-function getSlugs(dir) {
+function listMarkdown(dir) {
+  if (!fs.existsSync(dir)) return [];
+  // Se excluyen los archivos que empiezan por "_" (p. ej. _TEMPLATE.md).
   return fs
     .readdirSync(dir)
-    .filter((f) => f.endsWith('.md'))
+    .filter((f) => f.endsWith('.md') && !f.startsWith('_'))
     .map((f) => f.replace(/\.md$/, ''));
-}
-
-function getAllBlogMeta() {
-  return getSlugs(BLOG_DIR)
-    .map((slug) => {
-      const raw = fs.readFileSync(path.join(BLOG_DIR, `${slug}.md`), 'utf8');
-      const { data } = matter(raw);
-      return { slug, frontmatter: data };
-    })
-    .sort(
-      (a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
-    );
 }
 
 async function processMarkdown(content) {
@@ -50,47 +43,34 @@ async function processMarkdown(content) {
   return String(file);
 }
 
-async function getPostBySlug(dir, slug) {
-  const raw = fs.readFileSync(path.join(dir, `${slug}.md`), 'utf8');
-  const { data: frontmatter, content } = matter(raw);
-
-  const contentHtml = await processMarkdown(content);
-
-  return {
-    slug,
-    frontmatter,
-    contentHtml,
-    toc: extractToc(content),
-  };
-}
-
-function extractToc(markdownContent) {
+// El TOC se extrae del HTML YA GENERADO, no del markdown crudo. Así los ids
+// coinciden por construcción con los que emite rehype-slug.
+// La implementación anterior reimplementaba el slugify y borraba las tildes
+// (\w sin flag u es [A-Za-z0-9_]), de modo que "## Metodología" producía el
+// ancla #metodologa mientras el heading llevaba id="metodología": 8 de 13
+// anclas del sitio no navegaban.
+function extractTocFromHtml(html) {
   const toc = [];
-  for (const m of markdownContent.matchAll(/^## (.+)$/gm)) {
-    const text = m[1].trim();
-    const id = text
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, '')
-      .replace(/\s+/g, '-')
-      .replace(/-+/g, '-');
-    toc.push({ id, text });
+  for (const match of html.matchAll(/<h2\b[^>]*\bid="([^"]+)"[^>]*>([\s\S]*?)<\/h2>/g)) {
+    const text = match[2].replace(/<[^>]+>/g, '').trim();
+    if (text) toc.push({ id: match[1], text });
   }
   return toc;
 }
 
-// --- Notes multi-file system ---
+// --- Notas de clase (content/notes/class/<subject>/) ---
 
 function getSubjects() {
+  if (!fs.existsSync(NOTES_DIR)) return [];
   return fs
     .readdirSync(NOTES_DIR, { withFileTypes: true })
     .filter((d) => d.isDirectory())
     .map((d) => {
       const metaPath = path.join(NOTES_DIR, d.name, '_meta.json');
-      let meta = { title: d.name, professor: '', semester: '', description: '' };
-      if (fs.existsSync(metaPath)) {
-        meta = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
-      }
-      return { id: d.name, ...meta };
+      const meta = fs.existsSync(metaPath)
+        ? JSON.parse(fs.readFileSync(metaPath, 'utf8'))
+        : { title: { en: d.name, es: d.name }, description: { en: '', es: '' } };
+      return { id: d.name, contentLang: 'es', ...meta };
     });
 }
 
@@ -98,18 +78,18 @@ function getLessonsForSubject(subject) {
   const subjectDir = path.join(NOTES_DIR, subject);
   if (!fs.existsSync(subjectDir)) return [];
 
-  return fs
-    .readdirSync(subjectDir)
-    .filter((f) => f.endsWith('.md'))
-    .map((f) => {
-      const slug = f.replace(/\.md$/, '');
-      const raw = fs.readFileSync(path.join(subjectDir, f), 'utf8');
-      const { data } = matter(raw);
+  return listMarkdown(subjectDir)
+    .map((slug) => {
+      const raw = fs.readFileSync(path.join(subjectDir, `${slug}.md`), 'utf8');
+      const { data, content } = matter(raw);
       return {
         slug,
         title: data.title || slug,
         description: data.description || '',
         order: data.order || 0,
+        // Las lecciones sin cuerpo se marcan para excluirlas del sitemap y
+        // servirlas con noindex: son thin content.
+        empty: content.trim().length === 0,
       };
     })
     .sort((a, b) => a.order - b.order);
@@ -119,7 +99,6 @@ async function getLessonBySlug(subject, lessonSlug) {
   const filePath = path.join(NOTES_DIR, subject, `${lessonSlug}.md`);
   const raw = fs.readFileSync(filePath, 'utf8');
   const { data: frontmatter, content } = matter(raw);
-
   const contentHtml = await processMarkdown(content);
 
   return {
@@ -127,16 +106,30 @@ async function getLessonBySlug(subject, lessonSlug) {
     subject,
     frontmatter,
     contentHtml,
-    toc: extractToc(content),
+    toc: extractTocFromHtml(contentHtml),
+    empty: content.trim().length === 0,
   };
 }
 
+// --- Reading notes y commentary ---
+// Ambas devuelven SOLO las entradas con `published: true` en el frontmatter.
+// Hoy las dos listas están vacías, así que sus bloques no se renderizan (§4.3).
+
+function getPublishedMeta(dir) {
+  return listMarkdown(dir)
+    .map((slug) => {
+      const raw = fs.readFileSync(path.join(dir, `${slug}.md`), 'utf8');
+      const { data } = matter(raw);
+      return { slug, frontmatter: data };
+    })
+    .filter((entry) => entry.frontmatter.published === true)
+    .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+}
+
 module.exports = {
-  getBlogSlugs: () => getSlugs(BLOG_DIR),
-  getAllBlogMeta,
-  getBlogPostBySlug: (slug) => getPostBySlug(BLOG_DIR, slug),
-  // Notes multi-file
   getSubjects,
   getLessonsForSubject,
   getLessonBySlug,
+  getReadingNotes: () => getPublishedMeta(READING_DIR),
+  getCommentary: () => getPublishedMeta(COMMENTARY_DIR),
 };

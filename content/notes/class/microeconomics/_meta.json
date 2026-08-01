@@ -1,6 +1,10 @@
 {
-  "title": "Microeconomía 3",
+  "title": { "en": "Microeconomics III", "es": "Microeconomía 3" },
+  "description": {
+    "en": "Consumer and firm theory, general equilibrium, market failure.",
+    "es": "Teoría del consumidor, la firma, equilibrio general y fallos de mercado."
+  },
   "professor": "Oskar Nupia",
   "semester": "2025-2",
-  "description": "Teoría del consumidor, la firma, equilibrio general y fallos de mercado."
+  "contentLang": "es"
 }

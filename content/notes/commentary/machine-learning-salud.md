@@ -3,6 +3,7 @@ title: "Machine Learning aplicado a la focalización en Salud Pública"
 date: "2026-02-28"
 category: "Data Science"
 excerpt: "Reflexiones sobre el uso de algoritmos de aprendizaje automático para identificar poblaciones vulnerables y optimizar el gasto en salud pública, basadas en el trabajo con microrredes hospitalarias de El Salvador."
+published: false  # D2: contenido de demo sin verificar. No publicar hasta revisión factual.
 ---
 
 ## Contexto

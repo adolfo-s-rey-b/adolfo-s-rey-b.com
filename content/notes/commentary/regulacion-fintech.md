@@ -3,6 +3,7 @@ title: "El futuro de la regulación Fintech en Colombia y Open Finance"
 date: "2026-04-12"
 category: "Regulación"
 excerpt: "Un análisis sobre el ecosistema regulatorio del Open Finance en Colombia y los retos que enfrenta la regulación macroprudencial ante la innovación Fintech."
+published: false  # D2: contenido de demo sin verificar. No publicar hasta revisión factual.
 ---
 
 ## Introducción
