@@ -1,0 +1,30 @@
+{
+  "title": "Adolfo S. Rey B.",
+  "metaDescription": "Economista y abogado. Investigación sobre intermediación financiera, regulación del crédito y política macroprudencial. Candidato a magíster en Economía, Universidad de los Andes.",
+  "jobTitle": "Economista y abogado",
+  "heading": "Adolfo S. Rey B.",
+  "tagline": "Economista y abogado · Universidad de los Andes",
+  "photoAlt": "Adolfo S. Rey B.",
+  "body": [
+    "Soy economista y abogado, y trabajo sobre regulación del crédito, intermediación financiera y política macroprudencial. Mi investigación pregunta cómo las reglas que gobiernan el precio del crédito —y la estructura del sistema bancario que lo provee— determinan quién obtiene un préstamo y cómo la política monetaria se transmite por el sistema financiero en las economías emergentes.",
+    "Curso una maestría en Economía en la Universidad de los Andes, donde además tengo un nombramiento docente en la Facultad de Economía. Soy economista y abogado de la misma universidad, con opciones en Matemáticas y Francés. Soy un economista colombo-estadounidense radicado en Bogotá.",
+    "Dirijo la agenda de investigación de Colombia Fintech, la asociación gremial del sector fintech colombiano, donde diseño los estudios que producen las estadísticas de referencia del sector sobre crédito digital, pagos e inclusión financiera, y construyo la evidencia empírica que respalda las propuestas de regulación."
+  ],
+  "interestsHeading": "Intereses de investigación",
+  "interests": [
+    "Regulación del crédito y organización industrial de los mercados de crédito",
+    "Intermediación bancaria, selección adversa y racionamiento del crédito",
+    "Transmisión de la política monetaria por el sistema financiero",
+    "Redes financieras, contagio y riesgo sistémico",
+    "Desarrollo del mercado de capitales en economías emergentes"
+  ],
+  "links": {
+    "cv": "CV",
+    "research": "Investigación",
+    "teaching": "Docencia",
+    "email": "Correo",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "scholar": "Google Scholar"
+  }
+}

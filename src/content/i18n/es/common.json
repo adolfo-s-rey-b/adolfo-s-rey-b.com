@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "label": "Principal",
+    "skipToContent": "Ir al contenido",
+    "research": "Investigación",
+    "teaching": "Docencia",
+    "notes": "Notas y blog",
+    "code": "Código",
+    "cv": "CV",
+    "contact": "Contacto"
+  },
+  "marks": {
+    "pdf": "[PDF]",
+    "code": "[Código]",
+    "slides": "[Diapositivas]",
+    "syllabus": "[Programa]"
+  },
+  "labels": {
+    "abstract": "Resumen",
+    "spanishNotice": "Estas notas están en español.",
+    "spanishTag": "ES",
+    "backToNotes": "Notas y blog",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  }
+}

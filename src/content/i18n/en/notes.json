@@ -1,0 +1,15 @@
+{
+  "title": "Notes & Blog — Adolfo S. Rey B.",
+  "metaDescription": "Class notes for the courses I teach, notes on papers I am reading, and occasional commentary.",
+  "heading": "Notes & Blog",
+  "intro": "Class notes I write for the courses I teach, notes on papers I am reading, and occasional commentary.",
+  "blocks": {
+    "class": "Class notes",
+    "reading": "Reading notes",
+    "commentary": "Commentary"
+  },
+  "classNotesSubtitle": "Notes in Spanish · continuously revised",
+  "lessonsLabel": "lessons",
+  "lessonLabel": "lesson",
+  "tocHeading": "On this page"
+}

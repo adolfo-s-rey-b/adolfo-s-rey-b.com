@@ -1,0 +1,30 @@
+{
+  "title": "Adolfo S. Rey B.",
+  "metaDescription": "Economist and lawyer. Research on financial intermediation, credit regulation and macroprudential policy. MA Economics candidate, Universidad de los Andes.",
+  "jobTitle": "Economist and lawyer",
+  "heading": "Adolfo S. Rey B.",
+  "tagline": "Economist and lawyer · Universidad de los Andes",
+  "photoAlt": "Adolfo S. Rey B.",
+  "body": [
+    "I am an economist and lawyer working on credit regulation, financial intermediation and macroprudential policy. My research asks how the rules that govern the price of credit — and the structure of the banking system that supplies it — shape who gets a loan and how monetary policy travels through the financial system in emerging economies.",
+    "I am completing an MA in Economics at Universidad de los Andes, where I also hold a teaching appointment in the Department of Economics. I hold undergraduate degrees in Economics and Law from the same university, with minors in Mathematics and French. I am a Colombian–American economist based in Bogotá.",
+    "I lead the research agenda at Colombia Fintech, the industry association of Colombia's fintech sector, where I design the studies that produce the sector's reference statistics on digital lending, payments and financial inclusion, and build the empirical case behind regulatory proposals."
+  ],
+  "interestsHeading": "Research interests",
+  "interests": [
+    "Credit regulation and the industrial organization of credit markets",
+    "Banking intermediation, adverse selection and credit rationing",
+    "Monetary policy transmission through the financial system",
+    "Financial networks, contagion and systemic risk",
+    "Capital market development in emerging economies"
+  ],
+  "links": {
+    "cv": "CV",
+    "research": "Research",
+    "teaching": "Teaching",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "scholar": "Google Scholar"
+  }
+}

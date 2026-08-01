@@ -1,0 +1,26 @@
+{
+  "title": "Contact — Adolfo S. Rey B.",
+  "metaDescription": "Contact details for Adolfo S. Rey B., economist and lawyer at Universidad de los Andes.",
+  "heading": "Contact",
+  "intro": "The best way to reach me is by email.",
+  "labels": {
+    "email": "Email",
+    "emailSecondary": "Colombia Fintech",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "scholar": "Google Scholar"
+  },
+  "form": {
+    "heading": "Or send a message",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send",
+    "sending": "Sending…",
+    "sent": "Thank you — your message was sent.",
+    "error": "The message could not be sent. Please write to me by email instead.",
+    "nameTooShort": "Please enter your name.",
+    "emailInvalid": "Please enter a valid email address.",
+    "messageTooShort": "Please write at least 10 characters."
+  }
+}

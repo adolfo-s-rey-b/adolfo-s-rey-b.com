@@ -1,0 +1,28 @@
+{
+  "title": "CV — Adolfo S. Rey B.",
+  "metaDescription": "Hoja de vida de Adolfo S. Rey B. — economista y abogado, candidato a magíster en Economía en la Universidad de los Andes.",
+  "heading": "Hoja de vida",
+  "downloads": {
+    "en": "Academic CV (English)",
+    "es": "Hoja de vida (Español)"
+  },
+  "personalHeading": "Datos personales",
+  "citizenship": "Ciudadanía: Colombia y Estados Unidos. Autorizado para trabajar en EE. UU. sin patrocinio.",
+  "website": "Sitio web",
+  "sections": {
+    "education": "Educación",
+    "employment": "Experiencia",
+    "teaching": "Docencia",
+    "research": "Investigación",
+    "skills": "Habilidades técnicas",
+    "languages": "Idiomas",
+    "honors": "Reconocimientos"
+  },
+  "teachingSummary": [
+    "Profesor complementario, Facultad de Economía, Universidad de los Andes, 2024–presente. Monitor de pregrado, 2019–2023.",
+    "Cursos de teoría avanzada y del ciclo básico, entre ellos Teoría de Juegos, Microeconomía 3, Organización Industrial y Macroeconomía."
+  ],
+  "teachingLink": "Registro completo de docencia",
+  "researchSummary": "Intermediación bancaria, regulación del crédito, transmisión de la política monetaria y redes financieras en economías emergentes. Investigación aplicada para el Ministerio de Salud de El Salvador dentro de un proyecto financiado por el Banco Mundial.",
+  "researchLink": "Investigación"
+}

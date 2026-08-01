@@ -1,0 +1,15 @@
+{
+  "title": "Notas y blog — Adolfo S. Rey B.",
+  "metaDescription": "Notas de clase de los cursos que enseño, fichas de los papers que leo y comentarios ocasionales.",
+  "heading": "Notas y blog",
+  "intro": "Notas de clase que escribo para los cursos que enseño, fichas de los papers que estoy leyendo y comentarios ocasionales.",
+  "blocks": {
+    "class": "Notas de clase",
+    "reading": "Fichas de lectura",
+    "commentary": "Comentarios"
+  },
+  "classNotesSubtitle": "Notas en español · en revisión continua",
+  "lessonsLabel": "lecciones",
+  "lessonLabel": "lección",
+  "tocHeading": "En esta página"
+}

@@ -1,0 +1,26 @@
+{
+  "title": "Contacto — Adolfo S. Rey B.",
+  "metaDescription": "Datos de contacto de Adolfo S. Rey B., economista y abogado de la Universidad de los Andes.",
+  "heading": "Contacto",
+  "intro": "La mejor forma de contactarme es por correo electrónico.",
+  "labels": {
+    "email": "Correo",
+    "emailSecondary": "Colombia Fintech",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "scholar": "Google Scholar"
+  },
+  "form": {
+    "heading": "O envíame un mensaje",
+    "name": "Nombre",
+    "email": "Correo",
+    "message": "Mensaje",
+    "submit": "Enviar",
+    "sending": "Enviando…",
+    "sent": "Gracias — tu mensaje fue enviado.",
+    "error": "No se pudo enviar el mensaje. Escríbeme por correo.",
+    "nameTooShort": "Escribe tu nombre.",
+    "emailInvalid": "Escribe un correo válido.",
+    "messageTooShort": "Escribe al menos 10 caracteres."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Código — Adolfo S. Rey B.",
+  "metaDescription": "Repositorios públicos y código reproducible de replicación y trabajo con datos.",
+  "heading": "Código",
+  "body": [
+    "Mis repositorios públicos están en GitHub. Estoy construyendo un conjunto de repositorios reproducibles de replicación y trabajo con datos; se listarán aquí a medida que se publiquen.",
+    "Todo lo que publico incluye un README, un único script de entrada y código que corre de punta a punta desde los datos crudos."
+  ],
+  "githubLabel": "GitHub"
+}

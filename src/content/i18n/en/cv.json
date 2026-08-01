@@ -1,0 +1,28 @@
+{
+  "title": "CV — Adolfo S. Rey B.",
+  "metaDescription": "Curriculum vitae of Adolfo S. Rey B. — economist and lawyer, MA Economics candidate at Universidad de los Andes.",
+  "heading": "Curriculum Vitae",
+  "downloads": {
+    "en": "Academic CV (English)",
+    "es": "Hoja de vida (Español)"
+  },
+  "personalHeading": "Personal details",
+  "citizenship": "Citizenship: Colombia and the United States. Authorized to work in the U.S. without sponsorship.",
+  "website": "Website",
+  "sections": {
+    "education": "Education",
+    "employment": "Employment",
+    "teaching": "Teaching",
+    "research": "Research",
+    "skills": "Technical skills",
+    "languages": "Languages",
+    "honors": "Honors"
+  },
+  "teachingSummary": [
+    "Teaching Fellow (profesor complementario), Department of Economics, Universidad de los Andes, 2024–present. Undergraduate Teaching Assistant, 2019–2023.",
+    "Advanced theory and core sequence courses, including Game Theory, Microeconomics III, Industrial Organization and Macroeconomics."
+  ],
+  "teachingLink": "Full teaching record",
+  "researchSummary": "Banking intermediation, credit regulation, monetary policy transmission and financial networks in emerging economies. Applied research for the Ministry of Health of El Salvador under a World Bank–funded project.",
+  "researchLink": "Research"
+}
