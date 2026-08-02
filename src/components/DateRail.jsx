@@ -4,8 +4,9 @@
 export default function DateRail({ dates, children }) {
   return (
     <div className="mt-6 sm:flex sm:gap-6">
-      {/* 8rem y no 7: "Jan 2025 – Dec 2028" parte en dos líneas a 7rem. */}
-      <p className="tabular shrink-0 text-meta text-muted sm:w-32 sm:pt-1 sm:text-right">
+      {/* 9rem y whitespace-nowrap: a menos, "Aug 2019 – Jun 2025" parte en dos
+          líneas y el canal de fechas deja de leerse de un vistazo. */}
+      <p className="ui tabular shrink-0 whitespace-nowrap text-meta text-muted sm:w-36 sm:pt-1 sm:text-right">
         {dates}
       </p>
       <div className="min-w-0 flex-1">{children}</div>

@@ -44,7 +44,7 @@ function PaperItem({ item, copy }) {
       {item.abstract && (
         <details className="mt-3">
           <summary className="ui text-meta">{copy.labels.abstract}</summary>
-          <p className="prose-justify mt-2 max-w-prose">{item.abstract}</p>
+          <p className="prose-justify prose-dense mt-2 max-w-prose">{item.abstract}</p>
         </details>
       )}
     </article>
@@ -66,7 +66,7 @@ export default function ResearchView({ locale, routeKey, copy, applied, legalSch
       <Section id="agenda" title={copy.agendaHeading}>
         <div className="max-w-prose space-y-5">
           {copy.agenda.map((paragraph) => (
-            <p key={paragraph.slice(0, 40)} className="prose-justify">
+            <p key={paragraph.slice(0, 40)} className="prose-justify prose-dense">
               {paragraph}
             </p>
           ))}
@@ -86,7 +86,7 @@ export default function ResearchView({ locale, routeKey, copy, applied, legalSch
             <p className="ui mt-1 text-meta text-muted">{item.meta}</p>
             <div className="mt-4 max-w-prose space-y-4">
               {item.body.map((paragraph) => (
-                <p key={paragraph.slice(0, 40)} className="prose-justify">
+                <p key={paragraph.slice(0, 40)} className="prose-justify prose-dense">
                   {paragraph}
                 </p>
               ))}

@@ -6,7 +6,7 @@ import Footer from './Footer';
 // LayoutFullScreen se eliminó: el diseño nuevo es una columna en todas partes.
 // `reading` es para las páginas con barra lateral de navegación: da sitio al
 // índice sin estrechar la medida del texto.
-const WIDTHS = { prose: 'max-w-prose', wide: 'max-w-wide', reading: 'max-w-[74rem]' };
+const WIDTHS = { prose: 'max-w-prose', wide: 'max-w-wide', reading: 'max-w-[66rem]' };
 
 export default function Layout({
   children,

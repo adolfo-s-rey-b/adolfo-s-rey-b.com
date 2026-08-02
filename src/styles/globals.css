@@ -124,6 +124,14 @@ a:hover {
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Bloques descriptivos largos —la agenda de investigación, la descripción de un
+   proyecto—. A 19px un párrafo de varios cientos de palabras pesa demasiado en
+   la página; a 17px con más interlínea se lee mejor sin dejar de ser cómodo. */
+.prose-dense {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
 /* Marcas textuales [PDF] [Code] [Slides] — lo único que usa la mono */
 .mark {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;

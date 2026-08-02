@@ -66,7 +66,13 @@ export default function LessonView({
       <div className="mt-8 gap-10 lg:flex">
         {/* Barra lateral pegajosa: lista de lecciones para saltar entre ellas
             sin volver al índice, más el TOC de la lección actual. */}
-        <aside className="ui shrink-0 lg:sticky lg:top-8 lg:max-h-[calc(100vh-6rem)] lg:w-60 lg:overflow-y-auto">
+        {/* lg:self-start es imprescindible: sin él, el aside se estira a la
+            altura de la fila flex y `sticky` no tiene recorrido donde fijarse. */}
+        {/* Los guiones bajos son obligatorios: en un valor arbitrario de
+            Tailwind, `calc(100vh-4rem)` se emite tal cual y es CSS inválido
+            —calc exige espacios alrededor del signo—, así que la altura máxima
+            no se aplicaba y el aside crecía hasta romper el sticky. */}
+        <aside className="ui shrink-0 lg:sticky lg:top-8 lg:max-h-[calc(100vh_-_4rem)] lg:w-60 lg:self-start lg:overflow-y-auto">
           {lessons.length > 1 && (
             <nav aria-label={copy.labels.lessons}>
               <p className="text-meta text-muted">{copy.labels.lessons}</p>
@@ -131,7 +137,7 @@ export default function LessonView({
 
           <article
             ref={articleRef}
-            className="prose prose-justify mt-8 max-w-none"
+            className="prose prose-justify mt-8 max-w-[46rem]"
             lang={subject.contentLang}
             dangerouslySetInnerHTML={{ __html: lesson.contentHtml }}
           />
