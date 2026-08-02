@@ -38,6 +38,21 @@ check "sin lucide-react"                                  'lucide-react'
 check "sin estilos prohibidos por el §6.1"                'rounded-(xl|2xl|3xl|full)|shadow-(sm|md|lg|xl)|backdrop-|animate-'
 
 echo
+echo "Contenido de las notas:"
+# Las tres "notas semilla" eran resúmenes genéricos de manual escritos a mano,
+# no apuntes de Adolfo, y se publicaban atribuidos a cursos de profesores con
+# nombre y apellido. sync-notes.py solo copia desde la bóveda, así que si este
+# archivo reaparece es que alguien lo volvió a escribir.
+seed=$(find content/notes/class -name '01-contenido-completo.md' 2>/dev/null || true)
+if [ -n "$seed" ]; then
+  printf '  ✗ notas semilla de vuelta (no son apuntes reales)\n'
+  printf '%s\n' "$seed" | sed 's/^/      /'
+  fail=1
+else
+  printf '  ✓ sin notas semilla\n'
+fi
+
+echo
 echo "Rutas:"
 # Las rutas viejas solo pueden aparecer como ORIGEN de un redirect.
 old=$(grep -rniE 'teoria-juegos|/notes/macroeconomia|/notes/microeconomia|"/github' src/ data/ 2>/dev/null || true)

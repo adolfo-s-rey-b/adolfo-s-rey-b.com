@@ -18,7 +18,8 @@
     "submit": "Send",
     "sending": "Sending…",
     "sent": "Thank you — your message was sent.",
-    "error": "The message could not be sent. Please write to me by email instead.",
+    "error": "The message could not be sent.",
+    "errorUseEmail": "Please write to me directly at",
     "nameTooShort": "Please enter your name.",
     "emailInvalid": "Please enter a valid email address.",
     "messageTooShort": "Please write at least 10 characters."

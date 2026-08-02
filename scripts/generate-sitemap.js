@@ -15,7 +15,11 @@ const fs = require('fs');
 const path = require('path');
 
 const { SITE_URL, LOCALES, NAV, href, alternates } = require('../src/lib/routes');
-const { getSubjects, getLessonsForSubject, getBlogPosts } = require('../src/lib/markdown');
+const {
+  getPublishedSubjects,
+  getLessonsForSubject,
+  getBlogPosts,
+} = require('../src/lib/markdown');
 
 const entries = [];
 
@@ -32,7 +36,7 @@ for (const post of getBlogPosts()) {
 // Notas de clase: el contenido está en español, así que solo se indexa el árbol
 // /es/. La versión en inglés se sirve con noindex (ver lib/props/notes.js), y
 // una URL con noindex no debe aparecer en el sitemap.
-for (const subject of getSubjects()) {
+for (const subject of getPublishedSubjects()) {
   entries.push({ key: 'subject', params: { subject: subject.id }, bilingual: false });
 
   for (const lesson of getLessonsForSubject(subject.id)) {

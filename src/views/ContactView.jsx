@@ -9,6 +9,10 @@ export default function ContactView({ locale, routeKey, copy }) {
   const [values, setValues] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('idle');
   const [error, setError] = useState(null);
+  // Un mensaje que no se pudo entregar no es lo mismo que un campo mal
+  // diligenciado: en el primer caso hay que ofrecer el correo directo, porque
+  // el formulario no va a servir por más que lo reintente.
+  const [undelivered, setUndelivered] = useState(false);
 
   const t = copy.form;
 
@@ -29,11 +33,13 @@ export default function ContactView({ locale, routeKey, copy }) {
     if (problem) {
       setStatus('error');
       setError(problem);
+      setUndelivered(false);
       return;
     }
 
     setStatus('sending');
     setError(null);
+    setUndelivered(false);
 
     try {
       const res = await fetch('/api/contact', {
@@ -41,12 +47,15 @@ export default function ContactView({ locale, routeKey, copy }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(values),
       });
+      // El 200 solo llega cuando el servidor entregó de verdad, por n8n o por
+      // Resend. Cualquier otra cosa es un mensaje que no salió.
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setStatus('sent');
       setValues({ name: '', email: '', message: '' });
     } catch {
       setStatus('error');
       setError(t.error);
+      setUndelivered(true);
     }
   }
 
@@ -134,7 +143,18 @@ export default function ContactView({ locale, routeKey, copy }) {
 
           <p role="status" aria-live="polite" className="text-meta">
             {status === 'sent' && <span>{t.sent}</span>}
-            {status === 'error' && error && <span>{error}</span>}
+            {status === 'error' && error && (
+              <span>
+                {error}
+                {undelivered && (
+                  <>
+                    {' '}
+                    {t.errorUseEmail}{' '}
+                    <a href={`mailto:${LINKS.email}`}>{LINKS.email}</a>.
+                  </>
+                )}
+              </span>
+            )}
           </p>
         </form>
       </section>

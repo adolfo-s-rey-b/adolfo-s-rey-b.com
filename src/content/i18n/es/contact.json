@@ -18,7 +18,8 @@
     "submit": "Enviar",
     "sending": "Enviando…",
     "sent": "Gracias — tu mensaje fue enviado.",
-    "error": "No se pudo enviar el mensaje. Escríbeme por correo.",
+    "error": "No se pudo enviar el mensaje.",
+    "errorUseEmail": "Escríbeme directamente a",
     "nameTooShort": "Escribe tu nombre.",
     "emailInvalid": "Escribe un correo válido.",
     "messageTooShort": "Escribe al menos 10 caracteres."

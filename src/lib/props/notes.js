@@ -1,11 +1,15 @@
 const { tDeep } = require('../i18n');
 const { baseProps } = require('./index');
-const { getSubjects, getLessonsForSubject, getLessonBySlug } = require('../markdown');
+const {
+  getPublishedSubjects,
+  getLessonsForSubject,
+  getLessonBySlug,
+} = require('../markdown');
 
 // Índice /notes/ — solo notas de clase. Los escritos (fichas de papers,
 // comentarios, policy briefs) viven en /blog/.
 function notesIndexProps(locale) {
-  const subjects = getSubjects().map((subject) => {
+  const subjects = getPublishedSubjects().map((subject) => {
     const lessons = getLessonsForSubject(subject.id);
     return {
       id: subject.id,
@@ -23,11 +27,11 @@ function notesIndexProps(locale) {
 }
 
 function subjectPaths() {
-  return getSubjects().map((subject) => ({ params: { subject: subject.id } }));
+  return getPublishedSubjects().map((subject) => ({ params: { subject: subject.id } }));
 }
 
 function subjectProps(locale, params) {
-  const subject = getSubjects().find((s) => s.id === params.subject);
+  const subject = getPublishedSubjects().find((s) => s.id === params.subject);
   const lessons = getLessonsForSubject(params.subject);
 
   return {
@@ -50,7 +54,7 @@ function subjectProps(locale, params) {
 
 function lessonPaths() {
   const paths = [];
-  for (const subject of getSubjects()) {
+  for (const subject of getPublishedSubjects()) {
     for (const lesson of getLessonsForSubject(subject.id)) {
       paths.push({ params: { subject: subject.id, lesson: lesson.slug } });
     }
@@ -59,7 +63,7 @@ function lessonPaths() {
 }
 
 async function lessonProps(locale, params) {
-  const subject = getSubjects().find((s) => s.id === params.subject);
+  const subject = getPublishedSubjects().find((s) => s.id === params.subject);
   const lessons = getLessonsForSubject(params.subject);
   const index = lessons.findIndex((l) => l.slug === params.lesson);
   const lesson = await getLessonBySlug(params.subject, params.lesson);

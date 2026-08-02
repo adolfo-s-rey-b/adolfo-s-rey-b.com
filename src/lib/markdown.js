@@ -73,6 +73,16 @@ function getSubjects() {
     });
 }
 
+// Una materia sin lecciones no se publica: anunciar una serie vacía promete
+// más de lo que hay. La carpeta y su _meta.json bilingüe se quedan en el repo,
+// así que en cuanto la primera nota aterriza en la bóveda, sync-notes.py la
+// copia y la materia vuelve al índice sola, sin tocar código.
+//
+// Es el único filtro: lo consumen el índice, getStaticPaths y el sitemap.
+function getPublishedSubjects() {
+  return getSubjects().filter((s) => getLessonsForSubject(s.id).length > 0);
+}
+
 function getLessonsForSubject(subject) {
   const subjectDir = path.join(NOTES_DIR, subject);
   if (!fs.existsSync(subjectDir)) return [];
@@ -152,6 +162,7 @@ async function getBlogPostBySlug(slug) {
 
 module.exports = {
   getSubjects,
+  getPublishedSubjects,
   getLessonsForSubject,
   getLessonBySlug,
   getBlogPosts,

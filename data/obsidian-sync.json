@@ -18,8 +18,7 @@
       "subject": "microeconomics",
       "vaultPath": "Economía/Básicas/Micro/Microeconomía 3",
       "flatten": true,
-      "enabled": false,
-      "_note": "Carpeta aún no creada en la bóveda. Cambiar enabled a true cuando exista."
+      "enabled": true
     }
   ],
   "blogRoot": "/home/adolfo-s-rey-b/website/website-source/content/blog"

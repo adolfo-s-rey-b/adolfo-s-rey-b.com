@@ -15,9 +15,15 @@
 /notes/teoria-juegos/*          /notes/class/game-theory/:splat       301
 /notes/macroeconomia/*          /notes/class/macroeconomics/:splat    301
 /notes/microeconomia/*          /notes/class/microeconomics/:splat    301
-/notes/teoria-juegos            /notes/class/game-theory/             301
 /notes/macroeconomia            /notes/class/macroeconomics/          301
-/notes/microeconomia            /notes/class/microeconomics/          301
+
+# Game Theory y Microeconomics III todavía no tienen lecciones en la bóveda, así
+# que no se generan sus páginas y estas dos reglas apuntarían a un 404 — mala
+# señal para un lector y para Google. Van al índice mientras tanto.
+# RESTAURAR a /notes/class/game-theory/ y /notes/class/microeconomics/ en cuanto
+# haya notas: el índice las vuelve a listar solo, sin tocar código.
+/notes/teoria-juegos            /notes/                               301
+/notes/microeconomia            /notes/                               301
 
 # ── Blog ────────────────────────────────────────────────────────────────────
 # /blog/ vuelve a ser una ruta real: las notas de clase (/notes/) y los
