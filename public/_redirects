@@ -12,18 +12,23 @@
 # ── Notas de clase a slugs en inglés ────────────────────────────────────────
 # El splat va primero: cubre las lecciones profundas, que son las realmente
 # enlazadas. Los nombres de archivo de las lecciones no cambiaron.
-/notes/teoria-juegos/*          /notes/class/game-theory/:splat       301
-/notes/macroeconomia/*          /notes/class/macroeconomics/:splat    301
-/notes/microeconomia/*          /notes/class/microeconomics/:splat    301
-/notes/macroeconomia            /notes/class/macroeconomics/          301
-
 # Game Theory y Microeconomics III todavía no tienen lecciones en la bóveda, así
-# que no se generan sus páginas y estas dos reglas apuntarían a un 404 — mala
-# señal para un lector y para Google. Van al índice mientras tanto.
-# RESTAURAR a /notes/class/game-theory/ y /notes/class/microeconomics/ en cuanto
-# haya notas: el índice las vuelve a listar solo, sin tocar código.
+# que no se genera ninguna de sus páginas y apuntar ahí sería un 301 a un 404 —
+# mala señal para un lector y para Google. Van al índice mientras tanto.
+#
+# OJO: la regla splat tiene que ir también al índice. `/notes/teoria-juegos/`
+# —con barra final— casa con `/notes/teoria-juegos/*` y splat vacío, así que la
+# splat gana antes de que se evalúe la regla sin barra.
+#
+# RESTAURAR ambas a /notes/class/game-theory/:splat y /notes/class/microeconomics/:splat
+# en cuanto haya notas: el índice vuelve a listar la materia solo, sin tocar código.
+/notes/teoria-juegos/*          /notes/                               301
+/notes/microeconomia/*          /notes/                               301
 /notes/teoria-juegos            /notes/                               301
 /notes/microeconomia            /notes/                               301
+
+/notes/macroeconomia/*          /notes/class/macroeconomics/:splat    301
+/notes/macroeconomia            /notes/class/macroeconomics/          301
 
 # ── Blog ────────────────────────────────────────────────────────────────────
 # /blog/ vuelve a ser una ruta real: las notas de clase (/notes/) y los
