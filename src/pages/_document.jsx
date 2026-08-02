@@ -18,10 +18,18 @@ export default class MyDocument extends Document {
     return (
       <Html lang={this.props.lang}>
         <Head>
-          <meta name="color-scheme" content="light dark" />
           <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         </Head>
         <body>
+          {/* Aplica el tema antes del primer pintado para que no haya parpadeo.
+              El claro es el default: solo se pasa a oscuro si el usuario lo
+              eligió antes. Deliberadamente NO se consulta prefers-color-scheme. */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html:
+                "try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}",
+            }}
+          />
           <Main />
           <NextScript />
         </body>

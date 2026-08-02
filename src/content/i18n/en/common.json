@@ -8,7 +8,8 @@
     "code": "Code",
     "cv": "CV",
     "contact": "Contact",
-    "blog": "Blog"
+    "blog": "Blog",
+    "toggleTheme": "Switch between light and dark theme"
   },
   "marks": {
     "pdf": "[PDF]",
@@ -22,6 +23,8 @@
     "spanishTag": "ES",
     "backToNotes": "Notes & Blog",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "onThisPage": "On this page",
+    "lessons": "Lessons"
   }
 }

@@ -4,7 +4,9 @@ import Footer from './Footer';
 // §6.1: una sola columna. 42rem para prosa, 52rem para /cv/, /research/ y
 // /notes/. Sin tarjetas, sin sombras, sin fondos alternos.
 // LayoutFullScreen se eliminó: el diseño nuevo es una columna en todas partes.
-const WIDTHS = { prose: 'max-w-prose', wide: 'max-w-wide' };
+// `reading` es para las páginas con barra lateral de navegación: da sitio al
+// índice sin estrechar la medida del texto.
+const WIDTHS = { prose: 'max-w-prose', wide: 'max-w-wide', reading: 'max-w-[74rem]' };
 
 export default function Layout({
   children,

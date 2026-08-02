@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { NAV, href } from '../lib/routes';
 import LocaleSwitch from './LocaleSwitch';
+import ThemeToggle from './ThemeToggle';
 
 // §6.4: nombre a la izquierda en 16px semibold, navegación a la derecha en
 // 15px, selector de idioma al final, borde inferior de 1px. NO sticky.
@@ -40,6 +41,9 @@ export default function Header({ locale, routeKey, params = {}, nav }) {
             ))}
             <li>
               <LocaleSwitch routeKey={routeKey} params={params} locale={locale} />
+            </li>
+            <li>
+              <ThemeToggle label={nav.toggleTheme} />
             </li>
           </ul>
         </nav>

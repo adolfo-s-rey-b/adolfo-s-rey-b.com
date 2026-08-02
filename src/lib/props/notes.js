@@ -70,12 +70,18 @@ async function lessonProps(locale, params) {
       : null;
 
   return {
-    ...baseProps(locale, 'lesson', 'notes', { params, width: 'wide' }),
+    // Más ancho que el resto: la barra lateral de navegación necesita sitio sin
+    // estrechar la medida de lectura del artículo.
+    ...baseProps(locale, 'lesson', 'notes', { params, width: 'reading' }),
     subject: {
       id: subject.id,
       title: tDeep(subject.title, locale),
       contentLang: subject.contentLang || 'es',
     },
+    // La lista completa alimenta la barra lateral, para saltar entre lecciones
+    // sin volver al índice.
+    lessons: lessons.map((l) => ({ slug: l.slug, title: l.title })),
+    index,
     lesson: {
       slug: lesson.slug,
       title: lesson.frontmatter.title || lesson.slug,
