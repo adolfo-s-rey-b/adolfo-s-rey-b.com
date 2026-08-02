@@ -73,8 +73,34 @@ export default function LessonView({
             —calc exige espacios alrededor del signo—, así que la altura máxima
             no se aplicaba y el aside crecía hasta romper el sticky. */}
         <aside className="ui shrink-0 lg:sticky lg:top-8 lg:max-h-[calc(100vh_-_4rem)] lg:w-60 lg:self-start lg:overflow-y-auto">
+          {/* El TOC va primero: es lo que se necesita mientras se lee. Con 32
+              lecciones, ponerlo debajo de la lista lo dejaba fuera de vista. */}
+          {lesson.toc.length > 0 && (
+            <nav aria-label={copy.labels.onThisPage}>
+              <p className="text-meta text-muted">{copy.labels.onThisPage}</p>
+              <ol className="mt-2 space-y-1 text-meta">
+                {lesson.toc.map((item, i) => (
+                  <li key={item.id} className="flex gap-2">
+                    <span className="tabular shrink-0 text-muted">{i + 1}.</span>
+                    <a
+                      href={`#${item.id}`}
+                      lang={subject.contentLang}
+                      aria-current={activeId === item.id ? 'true' : undefined}
+                      className={activeId === item.id ? 'font-semibold' : undefined}
+                    >
+                      {item.text}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          )}
+
           {lessons.length > 1 && (
-            <nav aria-label={copy.labels.lessons}>
+            <nav
+              className={lesson.toc.length > 0 ? 'mt-8 border-t border-rule pt-6' : ''}
+              aria-label={copy.labels.lessons}
+            >
               <p className="text-meta text-muted">{copy.labels.lessons}</p>
               <ol className="mt-2 space-y-1 text-meta">
                 {lessons.map((item, i) => (
@@ -91,30 +117,6 @@ export default function LessonView({
                         {item.title}
                       </Link>
                     )}
-                  </li>
-                ))}
-              </ol>
-            </nav>
-          )}
-
-          {lesson.toc.length > 0 && (
-            <nav
-              className={lessons.length > 1 ? 'mt-8 border-t border-rule pt-6' : ''}
-              aria-label={copy.labels.onThisPage}
-            >
-              <p className="text-meta text-muted">{copy.labels.onThisPage}</p>
-              <ol className="mt-2 space-y-1 text-meta">
-                {lesson.toc.map((item, i) => (
-                  <li key={item.id} className="flex gap-2">
-                    <span className="tabular shrink-0 text-muted">{i + 1}.</span>
-                    <a
-                      href={`#${item.id}`}
-                      lang={subject.contentLang}
-                      aria-current={activeId === item.id ? 'true' : undefined}
-                      className={activeId === item.id ? 'font-semibold' : undefined}
-                    >
-                      {item.text}
-                    </a>
                   </li>
                 ))}
               </ol>
