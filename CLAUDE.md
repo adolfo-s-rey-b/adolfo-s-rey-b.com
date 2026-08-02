@@ -32,7 +32,14 @@ No son preferencias. Romper cualquiera rompe el build o publica algo falso.
 1. **Ninguna vista de `src/views/` puede importar `fs`, `path` ni `lib/markdown`.** El transform SSG de Next solo elimina imports huérfanos bajo `pages/`; desde una vista, `fs` acaba en el bundle de cliente y el build falla con `Can't resolve 'fs'`. Los accesos a disco viven en `src/lib/props/`. `npm run check` lo verifica.
 2. **`next/font` no puede importarse en `src/pages/_document.jsx`.** Next lanza `Cannot be used within pages/_document.js`. La fuente se carga en `_app.jsx`.
 3. **Todo `href` sale de `href()` de `src/lib/routes.js`**, nunca escrito a mano. Las rutas llevan barra final; una sin ella provoca un 308 extra en Cloudflare, invisible en dev y penalizado en Lighthouse.
-4. **No inventar ningún dato.** Ni una fecha, ni una cifra, ni un título, ni un coautor. Lo que falte queda como bloque comentado que no se renderiza. Los pendientes están en el README.
+4. **No inventar ningún dato.** Ni una fecha, ni una cifra, ni un título, ni un coautor. Todo número de norma, año o coautor que se publique se verifica contra fuente primaria — para regulación colombiana, la URF y la Superfinanciera. Lo que falte queda como bloque comentado que no se renderiza. Los pendientes están en el README.
+
+### Dos trampas que fallan en silencio
+
+No dan error: simplemente no funcionan, y se descubren mirando el render.
+
+- **`position: sticky` en un hijo flex necesita `self-start`.** Sin él, el elemento se estira a la altura de la fila y no le queda recorrido donde fijarse. Está en el `<aside>` de `src/views/LessonView.jsx`.
+- **Los valores arbitrarios de Tailwind con `calc()` necesitan guiones bajos**: `max-h-[calc(100vh_-_4rem)]`. Escrito `calc(100vh-4rem)` se emite tal cual y es CSS inválido, porque `calc` exige espacios alrededor del signo, así que la declaración se descarta entera.
 
 ## Arquitectura i18n
 
@@ -72,8 +79,24 @@ Cada materia es una carpeta bajo `content/notes/class/` con un `_meta.json` bili
 
 ## Diseño
 
-Cuatro colores más la regla, como custom properties en `src/styles/globals.css`, expuestos a Tailwind como `bg`, `text`, `muted`, `accent`, `rule`. Modo oscuro por `prefers-color-scheme`, sin toggle. Tipografía: Source Serif 4 variable, servida localmente y subseteada; mono del sistema solo para código y las marcas `[PDF]`.
+Cuatro colores más la regla, como custom properties en `src/styles/globals.css`, expuestos a Tailwind como `bg`, `text`, `muted`, `accent`, `rule`. En claro, morado de marca `#5E026E` sobre blanco; en oscuro, la paleta cálida. Todos los pares verificados AA.
 
-Sin tarjetas, sin sombras, sin gradientes, sin animaciones, sin iconografía decorativa (solo marcas textuales `[PDF]`, `[Code]`, `[Slides]`). `boxShadow` y `borderRadius` están neutralizados en `tailwind.config.js` como red de seguridad.
+**El claro es el default siempre.** Deliberadamente NO se consulta `prefers-color-scheme`: el oscuro solo aparece si el usuario lo elige con el conmutador del header, y esa elección se guarda en `localStorage`. La aplica un script en línea de `_document.jsx` antes del primer pintado, escribiendo `data-theme="dark"` en `<html>`; sin él habría un parpadeo de claro a oscuro en cada carga.
+
+**Dos familias**, ambas locales y subseteadas: **Source Serif 4** para el texto que se lee y **Source Sans 3** para encabezados, navegación y metadatos. El contraste entre familias es lo que da la jerarquía — no el tamaño. Mono del sistema solo para código y las marcas `[PDF]`.
+
+### Clases de utilidad propias
+
+| Clase | Para qué |
+|---|---|
+| `.ui` | Sans: navegación, fechas, metadatos, etiquetas |
+| `.prose-justify` | Justificado **con `hyphens: auto`**; cae a la izquierda bajo 640px |
+| `.prose-dense` | Bloques descriptivos largos a 17px/1.7, para que no pesen |
+| `.tabular` | Números tabulares en columnas de fechas |
+| `.mark` | Marcas textuales `[PDF]`, `[Code]`, `[Slides]` |
+
+Nunca justificar sin partición de palabras: abre ríos de blanco y empeora la lectura, que es justo lo contrario de lo que se busca. Funciona porque el atributo `lang` es correcto por página y por artículo.
+
+Sin tarjetas, sin sombras, sin gradientes, sin animaciones, sin iconografía decorativa — salvo los logos de LinkedIn, GitHub y Scholar en `/contact/`, que van como SVG inline porque el sitio es estático y no debe ganar dependencias de red. `boxShadow` y `borderRadius` están neutralizados en `tailwind.config.js` como red de seguridad.
 
 **El sitio se parece a un documento, no a un producto.** Si una decisión de diseño lo acerca a un producto, esa decisión está mal.

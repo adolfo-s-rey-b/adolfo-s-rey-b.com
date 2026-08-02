@@ -142,10 +142,54 @@ Como 1 y 2 son los dos únicos ítems de *Legal scholarship*, la sección entera
 
 ## Diseño
 
-Cuatro colores más la regla, definidos como custom properties en `src/styles/globals.css` y expuestos a Tailwind como `bg`, `text`, `muted`, `accent`, `rule`. En claro, morado `#5E026E` sobre blanco; en oscuro, la paleta cálida. Modo oscuro por `prefers-color-scheme`, sin toggle.
+Cuatro colores más la regla, definidos como custom properties en `src/styles/globals.css` y expuestos a Tailwind como `bg`, `text`, `muted`, `accent`, `rule`. En claro, morado `#5E026E` sobre blanco; en oscuro, la paleta cálida.
 
-Dos familias: **Source Serif 4** para el texto que se lee y **Source Sans 3** para encabezados, navegación y metadatos. El contraste entre familias es lo que da la jerarquía. Ambas locales y subseteadas. La prosa va justificada con `hyphens: auto` — justificar sin partir palabras abre ríos de blanco — y cae a alineación izquierda por debajo de 640px.
+**El claro es el default siempre.** No se consulta `prefers-color-scheme`: el oscuro solo aparece si el usuario lo elige con el conmutador `☀/☾` del header, y la elección se guarda en `localStorage`. La aplica un script en línea de `_document.jsx` antes del primer pintado — sin él habría un parpadeo en cada carga.
 
-Sin tarjetas, sin sombras, sin gradientes, sin animaciones, sin iconografía decorativa. `boxShadow` y `borderRadius` están neutralizados en `tailwind.config.js` para que cualquier `shadow-*` o `rounded-*` residual sea un no-op.
+Dos familias: **Source Serif 4** para el texto que se lee y **Source Sans 3** para encabezados, navegación y metadatos. El contraste entre familias es lo que da la jerarquía. Ambas locales y subseteadas (189 KB y 25 KB). La prosa va justificada con `hyphens: auto` — justificar sin partir palabras abre ríos de blanco — y cae a alineación izquierda por debajo de 640px.
+
+Sin tarjetas, sin sombras, sin gradientes, sin animaciones, sin iconografía decorativa — salvo los logos de LinkedIn, GitHub y Scholar en `/contact/`, en SVG inline. `boxShadow` y `borderRadius` están neutralizados en `tailwind.config.js` para que cualquier `shadow-*` o `rounded-*` residual sea un no-op.
 
 El sitio se parece a un documento, no a un producto. Si una decisión de diseño lo acerca a un producto, esa decisión está mal.
+
+### Actualizar las fuentes
+
+Se descargan de los releases oficiales de `adobe-fonts/source-serif` y `adobe-fonts/source-sans` (variantes `VF`/`WOFF2`) y se subsetean a Latin-1 más puntuación tipográfica, conservando el eje `wght`:
+
+```bash
+pyftsubset roman.woff2 --flavor=woff2 --output-file=out.woff2 \
+  --unicodes="U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0300-036F,U+2000-206F,U+2074,U+20AC,U+2122,U+2190-2193,U+2212,U+2215,U+FEFF,U+FFFD" \
+  --layout-features="kern,liga,clig,onum,tnum,frac" --drop-tables+=DSIG --no-hinting
+```
+
+Comprobar después que no falte ningún acento del español y que el eje variable siga presente.
+
+---
+
+## Decisiones que se apartan del spec
+
+`SPEC_Sitio_Web_Academico_2026.md` es la fuente de la intervención original, pero varias reglas se anularon después a petición de Adolfo. Se anotan aquí para que sean reversibles y no se “corrijan” por error:
+
+| Se apartó de | Qué se hizo | Cómo revertirlo |
+|---|---|---|
+| §3.1 y §7.7 — retirar el correo de Colombia Fintech | Se conservan los dos correos | `emailSecondary: null` en `src/lib/site.js` |
+| §6.1 — sin iconografía | Logos en los botones de `/contact/` | Quitar `SocialButtons` de `ContactView` |
+| §6.3 — sin conmutador de tema | Conmutador con claro por defecto | Ver "Diseño" |
+| §7.3 — registro docente dentro de un `<details>` | Lista cronológica siempre visible | `TeachingView.jsx` |
+| §4.3 — `/notes/` con tres bloques | `/notes/` de clase y `/blog/` aparte | `NAV` en `src/lib/routes.js` |
+| §10 — no escribir posts | Dos entradas reescritas con fuentes verificadas | `content/blog/` |
+
+El razonamiento del spec que **sí** sigue vigente: nada falso, sin ruido, evidencia verificable sobre afirmación, y el sitio se parece a un documento.
+
+---
+
+## Verificación
+
+```bash
+npm run check     # invariantes de contenido (scripts/check.sh)
+npm run build     # export estático; debe seguir sin runtime de servidor
+```
+
+`scripts/check.sh` codifica las reglas duras como comandos: sin colores antiguos, sin el coautor inventado, sin menciones a consultoría, sin rutas viejas fuera de `_redirects`, y ninguna vista importando `fs` o `lib/markdown`.
+
+Lo que `check.sh` no puede ver y hay que mirar a ojo tras cada cambio de diseño: que la justificación **parta palabras** y no abra ríos, que ninguna página desborde horizontalmente a 375px, que las fechas del CV quepan en una línea, y que la barra lateral de las lecciones quede fija al hacer scroll.
